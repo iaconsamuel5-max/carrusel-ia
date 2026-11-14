@@ -1,0 +1,44 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#000;overflow:hidden}#ov{position:absolute;inset:0;pointer-events:none;font-family:Inter;color:#F4F1EA}</style></head><body>
+<div id="ov"><div style="position:absolute;left:0;right:0;bottom:0;height:640px;background:linear-gradient(to bottom,rgba(18,21,25,0),rgba(18,21,25,.92) 35%)"></div>
+ <div style="position:absolute;left:96px;top:96px;border:2px solid #FF8A3D;color:#FF8A3D;font-weight:700;font-size:28px;letter-spacing:4px;padding:12px 26px;border-radius:999px">MECÁNICA 3D</div>
+ <div style="position:absolute;left:96px;right:96px;top:860px">
+  <div style="font-weight:800;font-size:76px;line-height:1.05;letter-spacing:-1.5px">Cada engranaje<br><span style="color:#FF8A3D">cuenta una historia.</span></div>
+  <div style="margin-top:26px;font-size:34px;line-height:1.4;color:#C9CED6">Con sensores e IA, esa historia se lee <b style="color:#FF8A3D">antes</b> de que falle.</div>
+ </div>
+ <div style="position:absolute;left:96px;right:96px;bottom:90px;display:flex;justify-content:space-between;font-size:28px;color:#C9CED6;border-top:2px solid #2A3038;padding-top:28px"><span>Samuel Sánchez · Datos &amp; IA</span><b style="color:#FF8A3D">#IAconSamuel</b></div>
+</div>
+<script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js"}}</script>
+<script type="module">
+import * as THREE from 'three';
+const W=1080,H=1350;
+const r=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});r.setSize(W,H);r.setPixelRatio(1);r.toneMapping=THREE.ACESFilmicToneMapping;r.outputColorSpace=THREE.SRGBColorSpace;
+r.domElement.style.position='absolute';document.body.prepend(r.domElement);
+const sc=new THREE.Scene();sc.background=new THREE.Color('#121519');sc.fog=new THREE.Fog('#121519',12,26);
+const cam=new THREE.PerspectiveCamera(36,W/H,.1,100);
+sc.add(new THREE.HemisphereLight('#8aa0b8','#1a1208',0.7));
+const key=new THREE.DirectionalLight('#ffffff',2.2);key.position.set(4,6,6);sc.add(key);
+const rim=new THREE.PointLight('#FF8A3D',60,20);rim.position.set(-4,1.5,-2);sc.add(rim);
+const cy=new THREE.PointLight('#22E6FF',25,20);cy.position.set(4,-2,3);sc.add(cy);
+function gearShape(n,ro,ri,hole){const s=new THREE.Shape();for(let i=0;i<n*4;i++){const a=i/(n*4)*Math.PI*2;const rr=(i%4==1||i%4==2)?ro:ri;const x=Math.cos(a)*rr,y=Math.sin(a)*rr;i?s.lineTo(x,y):s.moveTo(x,y)}s.closePath();
+ const h=new THREE.Path();h.absarc(0,0,hole,0,Math.PI*2,true);s.holes.push(h);
+ for(let k=0;k<6;k++){const a=k/6*Math.PI*2,c=ri*0.62;const p=new THREE.Path();p.absarc(Math.cos(a)*c,Math.sin(a)*c,ri*0.14,0,Math.PI*2,true);s.holes.push(p)}return s}
+function gear(n,ro,ri,hole,depth,color){const g=new THREE.ExtrudeGeometry(gearShape(n,ro,ri,hole),{depth,bevelEnabled:true,bevelSize:.03,bevelThickness:.03,bevelSegments:2,curveSegments:24});g.center();
+ return new THREE.Mesh(g,new THREE.MeshStandardMaterial({color,metalness:.85,roughness:.32}))}
+const g1=gear(18,1.6,1.4,.35,.45,'#B8BEC6');g1.position.set(-0.9,0.9,0);sc.add(g1);
+const g2=gear(10,0.95,0.78,.22,.45,'#FF8A3D');g2.material.metalness=.6;g2.position.set(1.47,1.55,0.05);sc.add(g2);
+const g3=gear(12,1.1,0.93,.25,.45,'#8C939C');g3.position.set(0.95,-0.85,-0.05);sc.add(g3);
+// bearing: torus rings + balls
+const bear=new THREE.Group();const steel=new THREE.MeshStandardMaterial({color:'#D9DEE4',metalness:.95,roughness:.18});
+bear.add(new THREE.Mesh(new THREE.TorusGeometry(.9,.12,24,80),steel));bear.add(new THREE.Mesh(new THREE.TorusGeometry(.5,.1,24,80),steel));
+for(let i=0;i<9;i++){const b=new THREE.Mesh(new THREE.SphereGeometry(.14,32,24),steel);const a=i/9*Math.PI*2;b.position.set(Math.cos(a)*.7,Math.sin(a)*.7,0);bear.add(b)}
+bear.position.set(-2.6,-0.9,0.8);bear.rotation.y=.5;sc.add(bear);
+// floor grid
+const grid=new THREE.GridHelper(40,60,'#FF8A3D','#2A3038');grid.position.y=-3.2;grid.material.transparent=true;grid.material.opacity=.35;sc.add(grid);
+// particles
+const pg=new THREE.BufferGeometry();const N=400;const pos=new Float32Array(N*3);for(let i=0;i<N;i++){pos[i*3]=(Math.random()-.5)*14;pos[i*3+1]=(Math.random()-.5)*10;pos[i*3+2]=(Math.random()-.5)*8}
+pg.setAttribute('position',new THREE.BufferAttribute(pos,3));const pts=new THREE.Points(pg,new THREE.PointsMaterial({color:'#FFB07A',size:.035,transparent:true,opacity:.7}));sc.add(pts);
+window.draw=(t)=>{const w=t*0.6;g1.rotation.z=w;g2.rotation.z=-w*18/10+0.16;g3.rotation.z=-w*18/12+0.13;bear.rotation.z=-w*1.2;
+ const a=Math.sin(t*2*Math.PI/8)*0.35;cam.position.set(Math.sin(a)*15.5,0.6+Math.sin(t*0.8)*.15,Math.cos(a)*15.5);cam.lookAt(0,-1.25,0);
+ pts.rotation.y=t*.05;pts.position.y=(t*.15)%1;rim.intensity=55+10*Math.sin(t*4);r.render(sc,cam);return true};
+window.ready=true;
+</script></body></html>
