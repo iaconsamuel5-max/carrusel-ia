@@ -6,3 +6,4 @@ Fecha | Tipo | Frase principal
 2026-11-13 | humor | IA, organízame la vida / cierra las 47 pestañas
 2026-11-13 | pareja | Le pedí a la IA que describiera a mi pareja (Error 404)
 2026-11-13 | postales | Piedra del Peñol, Guatapé (publicada)
+2026-11-14 | postales | Torre Eiffel, París (1889, 18.038 piezas, sensores de fibra óptica)
