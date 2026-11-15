@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Laboratorio 3D · IA con Samuel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+/* VOICE: taller industrial de noche, técnico pero cercano
+   IDEA: una mesa de trabajo con piezas reales que el visitante toma y gira
+   PICTURE: engranajes metálicos y rodamiento en 3D, girables con el dedo
+   COLOUR and TYPE: marca de Samuel — grafito #121519, naranja #FF8A3D, cian de sensor #22E6FF; Inter
+   LAYOUT: escenario 3D a pantalla casi completa, chips de piezas debajo, ficha de la pieza, cierre con contacto */
+:root{color-scheme:dark;--bg:#121519;--panel:#1B2027;--line:#2A3038;--ink:#F4F1EA;--soft:#B9C1CB;--acc:#FF8A3D;--cy:#22E6FF}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif;overflow-x:clip}
+.stage{position:relative;height:min(68vh,640px);min-height:380px;background:radial-gradient(120% 90% at 70% 10%,#232a33 0%,var(--bg) 60%);touch-action:none}
+.stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab}
+.stage canvas:active{cursor:grabbing}
+.top{position:absolute;left:max(5vw,16px);right:max(5vw,16px);top:18px;display:flex;justify-content:space-between;align-items:center;gap:12px;pointer-events:none}
+.brand{font-weight:800;font-size:15px}.brand b{color:var(--acc)}
+.tag{border:1.5px solid var(--acc);color:var(--acc);border-radius:999px;padding:5px 12px;font-size:13px;font-weight:700}
+.hint{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);background:rgba(18,21,25,.82);border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-size:14px;color:var(--soft);display:flex;gap:10px;align-items:center;transition:opacity .6s;white-space:nowrap}
+.hint svg{flex:none}
+.hint.off{opacity:0}
+.loading{position:absolute;inset:0;display:grid;place-items:center;color:var(--soft);font-size:15px}
+.band{padding:clamp(22px,4vw,48px) max(5vw,16px);max-width:1240px;margin:0 auto}
+h1{font-size:clamp(30px,5vw,48px);line-height:1.05;margin:0 0 10px;text-wrap:balance;font-weight:800}
+.lead{color:var(--soft);max-width:62ch;margin:0}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}.tab{min-height:44px;padding:0 16px;border-radius:12px;border:1.5px solid var(--line);background:transparent;color:var(--soft);font:700 15px Inter,sans-serif;cursor:pointer}.tab[aria-pressed=true]{background:var(--acc);border-color:var(--acc);color:#1a0e05}.tab:focus-visible{outline:3px solid var(--cy);outline-offset:2px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.chip{min-height:44px;padding:0 18px;border-radius:999px;border:1.5px solid var(--line);background:var(--panel);color:var(--ink);font:600 15px Inter,sans-serif;cursor:pointer;display:flex;align-items:center;gap:8px}
+.chip i{width:10px;height:10px;border-radius:50%;display:block}
+.chip[aria-pressed=true]{border-color:var(--acc);background:#2a1d14}
+.chip:focus-visible,.btn:focus-visible{outline:3px solid var(--cy);outline-offset:2px}
+.card{margin-top:22px;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:clamp(18px,3vw,30px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(16px,3vw,36px)}
+.card h2{font-size:clamp(24px,3.4vw,32px);line-height:1.1;margin:0 0 8px}
+.card p{margin:0;color:var(--soft)}
+.ia{border-left:3px solid var(--cy);padding-left:18px}
+.ia h3{margin:0 0 8px;font-size:17px;color:var(--cy)}
+.ia ul{margin:0;padding-left:18px;color:var(--ink)}
+.ia li{margin:4px 0}
+.cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;border-top:1px solid var(--line)}
+.cta p{margin:0;font-size:18px;font-weight:700;max-width:40ch}
+.btn{min-height:48px;display:inline-flex;align-items:center;padding:0 22px;border-radius:999px;background:var(--acc);color:#1a0e05;font-weight:800;text-decoration:none}
+.foot{color:var(--soft);font-size:13px;padding-top:0}
+.acts{display:flex;flex-wrap:wrap;gap:10px}
+.btn.alt{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.cta .note{flex-basis:100%;font-size:14px;font-weight:400;color:var(--soft);max-width:none}
+.note b{color:var(--ink)}
+@media(max-width:700px){.card{grid-template-columns:minmax(0,1fr)}.tag{display:none}}
+@media(prefers-reduced-motion:reduce){.hint{transition:none}}
+</style>
+</head>
+<body>
+<section class="stage" id="stage">
+  <div class="loading" id="loading">Cargando el taller 3D…</div>
+  <div class="top"><div class="brand">IA con <b>Samuel</b> · Laboratorio 3D</div><div class="tag">Interactivo</div></div>
+  <div class="hint" id="hint"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF8A3D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11V5a2 2 0 0 1 4 0v6"/><path d="M13 9a2 2 0 0 1 4 0v3"/><path d="M17 11a2 2 0 0 1 4 0v4a7 7 0 0 1-7 7h-1a7 7 0 0 1-6-3.4L4 15a2 2 0 0 1 3.4-2L9 15"/></svg>Arrastra para girar · toca una pieza</div>
+</section>
+
+<section class="band">
+  <div class="tabs" id="tabs"><button class="tab" data-m="valvula" aria-pressed="true">Válvula de control</button><button class="tab" data-m="engranajes" aria-pressed="false">Engranajes y rodamiento</button></div>
+  <h1>Toca una pieza y descubre cómo la IA la cuida.</h1>
+  <p class="lead" id="lead">Gira el modelo con el dedo, acerca con dos dedos y elige una pieza para ver cómo la IA la vigila.</p>
+  <div class="chips" id="chips"></div>
+  <article class="card" id="card" aria-live="polite"></article>
+</section>
+
+<section class="band cta">
+  <p>¿Quieres aplicar IA en la industria o el mantenimiento de tu empresa?</p>
+  <div class="acts">
+    <a class="btn" href="https://ig.me/m/samuelsanchez1407">Escríbeme INFO en Instagram</a>
+    <a class="btn alt" href="https://www.instagram.com/samuelsanchez1407/">Ver mi perfil @samuelsanchez1407</a>
+    <a class="btn alt" href="https://www.facebook.com/1499660986554774">Página de Facebook: IA con Samuel</a>
+  </div>
+  <p class="note">Si el chat no abre, entra a mi perfil y toca <b>Enviar mensaje</b>. Escribe la palabra INFO.</p>
+</section>
+<p class="band foot">Samuel Sánchez · Datos &amp; IA · @samuelsanchez1407 · #IAconSamuel. Modelo ilustrativo con fines educativos.</p>
+
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+// builds an industrial control valve assembly; returns {group, parts:{id:object3D}, animate(t)}
+function buildValve(THREE){
+ const G=new THREE.Group();
+ const steel=new THREE.MeshStandardMaterial({color:'#AEB6C0',metalness:.9,roughness:.28,emissive:'#000'});
+ const dark=new THREE.MeshStandardMaterial({color:'#3B434D',metalness:.75,roughness:.4,emissive:'#000'});
+ const orange=new THREE.MeshStandardMaterial({color:'#FF8A3D',metalness:.35,roughness:.45,emissive:'#000'});
+ const blue=new THREE.MeshStandardMaterial({color:'#2E6E9E',metalness:.4,roughness:.45,emissive:'#000'});
+ const C=(r1,r2,h,m,seg=48)=>new THREE.Mesh(new THREE.CylinderGeometry(r1,r2,h,seg),m);
+ // pipeline
+ const pipe=new THREE.Group();
+ [-1,1].forEach(s=>{const p=C(.42,.42,3.2,dark.clone());p.rotation.z=Math.PI/2;p.position.x=s*2.35;pipe.add(p);
+   const f=C(.78,.78,.18,steel.clone());f.rotation.z=Math.PI/2;f.position.x=s*.82;pipe.add(f);
+   for(let k=0;k<8;k++){const a=k/8*Math.PI*2,b=C(.06,.06,.32,steel.clone(),12);b.rotation.z=Math.PI/2;b.position.set(s*.82,Math.cos(a)*.64,Math.sin(a)*.64);pipe.add(b)}});
+ G.add(pipe);
+ // valve body
+ const body=new THREE.Group();
+ const bb=new THREE.Mesh(new THREE.SphereGeometry(.82,48,32),blue.clone());bb.scale.set(1,.9,.9);body.add(bb);
+ [-1,1].forEach(s=>{const n=C(.5,.6,.5,blue.clone());n.rotation.z=Math.PI/2;n.position.x=s*.55;body.add(n)});
+ const bon=C(.42,.55,.6,blue.clone());bon.position.y=.85;body.add(bon);
+ G.add(body);
+ // yoke + stem
+ const yoke=new THREE.Group();
+ [-1,1].forEach(s=>{const p=C(.07,.07,1.1,steel.clone(),16);p.position.set(s*.32,1.7,0);yoke.add(p)});
+ const stem=C(.05,.05,1.2,steel.clone(),16);stem.position.y=1.6;yoke.add(stem);
+ const plate=C(.45,.45,.08,steel.clone());plate.position.y=2.25;yoke.add(plate);
+ G.add(yoke);
+ // actuator (diaphragm)
+ const act=new THREE.Group();
+ const low=C(1.25,1.05,.35,orange.clone(),64);low.position.y=2.47;act.add(low);
+ const up=C(1.05,1.25,.35,orange.clone(),64);up.position.y=2.82;act.add(up);
+ const rim=new THREE.Mesh(new THREE.TorusGeometry(1.27,.05,12,80),steel.clone());rim.rotation.x=Math.PI/2;rim.position.y=2.65;act.add(rim);
+ const cap=C(.25,.3,.25,steel.clone());cap.position.y=3.1;act.add(cap);
+ G.add(act);
+ // positioner
+ const pos=new THREE.Group();
+ const box=new THREE.Mesh(new THREE.BoxGeometry(.7,.55,.4),new THREE.MeshStandardMaterial({color:'#E8ECEF',metalness:.2,roughness:.5,emissive:'#000'}));box.position.set(.75,1.7,.42);pos.add(box);
+ const scr=new THREE.Mesh(new THREE.PlaneGeometry(.42,.18),new THREE.MeshBasicMaterial({color:'#22E6FF'}));scr.position.set(.75,1.78,.625);pos.add(scr);
+ const tube=C(.03,.03,.9,steel.clone(),8);tube.position.set(.75,2.2,.42);pos.add(tube);
+ G.add(pos);
+ // pressure gauge on pipe
+ const gauge=new THREE.Group();
+ const cv=document.createElement('canvas');cv.width=cv.height=256;const g=cv.getContext('2d');
+ function dial(v){g.fillStyle='#fff';g.fillRect(0,0,256,256);g.strokeStyle='#222';g.lineWidth=4;
+  for(let i=0;i<=10;i++){const a=Math.PI*.75+i/10*Math.PI*1.5;g.beginPath();g.moveTo(128+Math.cos(a)*100,128+Math.sin(a)*100);g.lineTo(128+Math.cos(a)*(i%5?88:78),128+Math.sin(a)*(i%5?88:78));g.stroke()}
+  g.strokeStyle='#d33';g.lineWidth=10;g.beginPath();g.arc(128,128,94,Math.PI*1.95,Math.PI*2.25);g.stroke();
+  g.fillStyle='#222';g.font='bold 26px sans-serif';g.textAlign='center';g.fillText('bar',128,190);
+  const a=Math.PI*.75+v*Math.PI*1.5;g.strokeStyle='#111';g.lineWidth=7;g.beginPath();g.moveTo(128,128);g.lineTo(128+Math.cos(a)*84,128+Math.sin(a)*84);g.stroke();g.fillStyle='#111';g.beginPath();g.arc(128,128,12,0,7);g.fill()}
+ dial(.4);const tex=new THREE.CanvasTexture(cv);tex.colorSpace=THREE.SRGBColorSpace;
+ const gs=C(.06,.06,.6,steel.clone(),12);gs.position.set(-2.3,.7,0);gauge.add(gs);
+ const gb=C(.48,.48,.22,steel.clone(),48);gb.rotation.x=Math.PI/2;gb.position.set(-2.3,1.35,0);gauge.add(gb);
+ const face=new THREE.Mesh(new THREE.CircleGeometry(.42,48),new THREE.MeshBasicMaterial({map:tex}));face.position.set(-2.3,1.35,.115);gauge.add(face);
+ G.add(gauge);
+ // flow particles inside pipe (visible through nothing -> put just outside as glowing ring markers along pipe top)
+ const flow=new THREE.Group();const fm=new THREE.MeshBasicMaterial({color:'#22E6FF',transparent:true,opacity:.9});
+ for(let i=0;i<14;i++){const s=new THREE.Mesh(new THREE.SphereGeometry(.05,12,8),fm);flow.add(s)}
+ G.add(flow);
+ const parts={tuberia:pipe,cuerpo:body,actuador:act,posicionador:pos,manometro:gauge};
+ function animate(t){stem.position.y=1.6+Math.sin(t*1.2)*.05;plate.position.y=2.25+Math.sin(t*1.2)*.05;
+  dial(.42+.12*Math.sin(t*.9));tex.needsUpdate=true;scr.material.color.setHSL(.52,1,.45+.1*Math.sin(t*4));
+  flow.children.forEach((s,i)=>{const u=((t*.35+i/14)%1);s.position.set(-3.9+u*7.8,.46,0);s.material.opacity=.9})}
+ return {group:G,parts,animate};
+}
+
+{
+const VALVE=[
+ {id:'actuador',name:'Actuador',dot:'#FF8A3D',what:'Es el "músculo" de la válvula: con aire a presión empuja un diafragma que abre o cierra el paso del fluido.',
+  ia:['Detecta fugas de aire comparando la presión enviada con el movimiento real','Aprende cuánto tarda en abrir y avisa si se vuelve lento','Anticipa el desgaste del diafragma']},
+ {id:'posicionador',name:'Posicionador inteligente',dot:'#22E6FF',what:'Es el "cerebro" local: recibe la orden del sistema de control y ajusta el actuador hasta lograr la apertura exacta.',
+  ia:['Registra miles de datos de cada maniobra','Un modelo encuentra fricción o atascamiento antes de que afecte el proceso','Permite diagnosticar la válvula sin desmontarla']},
+ {id:'cuerpo',name:'Cuerpo de la válvula',dot:'#2E6E9E',what:'Por dentro está el obturador que regula el caudal. La erosión, la cavitación o una mala empaquetadura terminan en fugas.',
+  ia:['Relaciona caudal, presión y apertura para detectar erosión interna','Escucha ruido y vibración típicos de la cavitación','Ayuda a priorizar qué válvula revisar en la próxima parada']},
+ {id:'manometro',name:'Manómetro',dot:'#E8ECEF',what:'Muestra la presión en la línea. Hoy muchos se acompañan de transmisores que envían la medida al sistema de control.',
+  ia:['Detecta lecturas que se salen de lo normal','Encuentra sensores descalibrados comparándolos con otros','Alimenta tableros y alertas en tiempo real']},
+ {id:'tuberia',name:'Tubería y bridas',dot:'#AEB6C0',what:'Llevan el fluido y unen los equipos con bridas y pernos. Corrosión, vibración y fugas en las uniones son los riesgos típicos.',
+  ia:['Cruza datos de inspección para estimar la corrosión','Detecta patrones de vibración peligrosos en la línea','Ayuda a planear inspecciones donde más riesgo hay']},
+];
+const GEARS=[
+ {id:'grande',name:'Engranaje principal',dot:'#B8BEC6',
+  what:'Recibe la potencia del motor y la reparte. Si un diente se desgasta o se fisura, todo el tren de engranajes lo siente.',
+  ia:['Detecta cambios en el patrón de vibración a la frecuencia de engrane','Compara cada medición con el historial del equipo','Avisa cuando el desgaste se acelera, no cuando ya se rompió']},
+ {id:'pinon',name:'Piñón',dot:'#FF8A3D',
+  what:'Es el engranaje pequeño: gira más rápido y sus dientes trabajan más veces por minuto, por eso suele desgastarse primero.',
+  ia:['Vigila la temperatura y el ruido en tiempo real','Relaciona carga de trabajo y desgaste','Sugiere cuándo revisar la lubricación']},
+ {id:'conducido',name:'Engranaje conducido',dot:'#2FA9C4',
+  what:'Recibe el movimiento y lo entrega a la máquina. Un mal alineamiento con los demás engranajes se nota aquí como golpeteo.',
+  ia:['Reconoce el golpeteo típico de un desalineamiento','Separa el ruido normal del anormal con modelos entrenados','Prioriza qué equipo revisar primero']},
+ {id:'rodamiento',name:'Rodamiento',dot:'#D9DEE4',
+  what:'Permite que el eje gire con poca fricción. Ruido nuevo, más vibración y calor en el alojamiento son sus tres señales de alerta.',
+  ia:['Sensores de vibración y temperatura envían datos continuos','La IA aprende cómo suena el rodamiento sano','Predice la falla con días o semanas de margen para planear el cambio']},
+];
+let PIECES=VALVE;
+const MODELS={valvula:VALVE,engranajes:GEARS};
+const stage=document.getElementById('stage'),chips=document.getElementById('chips'),card=document.getElementById('card'),hint=document.getElementById('hint');
+chips.innerHTML=PIECES.map(p=>`<button class="chip" id="chip-${p.id}" data-id="${p.id}" aria-pressed="false"><i style="background:${p.dot}"></i>${p.name}</button>`).join('');
+function show(id){const p=PIECES.find(q=>q.id===id);
+ chips.querySelectorAll('.chip').forEach(b=>b.setAttribute('aria-pressed',b.dataset.id===id));
+ card.innerHTML=`<div><h2>${p.name}</h2><p>${p.what}</p></div><div class="ia"><h3>Cómo ayuda la IA</h3><ul>${p.ia.map(x=>`<li>${x}</li>`).join('')}</ul></div>`;
+ select(id);}
+const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.outputColorSpace=THREE.SRGBColorSpace;stage.prepend(renderer.domElement);
+const scene=new THREE.Scene();scene.fog=new THREE.Fog('#121519',14,30);
+const cam=new THREE.PerspectiveCamera(38,1,.1,100);cam.position.set(0,1.2,13);
+scene.add(new THREE.HemisphereLight('#8aa0b8','#1a1208',.75));
+const key=new THREE.DirectionalLight('#fff',2.2);key.position.set(4,6,6);scene.add(key);
+const rim=new THREE.PointLight('#FF8A3D',60,22);rim.position.set(-4,1.5,-2);scene.add(rim);
+const cyl=new THREE.PointLight('#22E6FF',25,22);cyl.position.set(4,-2,3);scene.add(cyl);
+function gearShape(n,ro,ri,hole){const s=new THREE.Shape();for(let i=0;i<n*4;i++){const a=i/(n*4)*Math.PI*2,rr=(i%4==1||i%4==2)?ro:ri,x=Math.cos(a)*rr,y=Math.sin(a)*rr;i?s.lineTo(x,y):s.moveTo(x,y)}s.closePath();
+ const h=new THREE.Path();h.absarc(0,0,hole,0,Math.PI*2,true);s.holes.push(h);
+ for(let k=0;k<6;k++){const a=k/6*Math.PI*2,c=ri*.62,p=new THREE.Path();p.absarc(Math.cos(a)*c,Math.sin(a)*c,ri*.14,0,Math.PI*2,true);s.holes.push(p)}return s}
+function gear(n,ro,ri,hole,color,metal=.85){const g=new THREE.ExtrudeGeometry(gearShape(n,ro,ri,hole),{depth:.45,bevelEnabled:true,bevelSize:.03,bevelThickness:.03,bevelSegments:2,curveSegments:24});g.center();
+ return new THREE.Mesh(g,new THREE.MeshStandardMaterial({color,metalness:metal,roughness:.32,emissive:'#000'}))}
+const root=new THREE.Group();scene.add(root);
+const g1=gear(18,1.6,1.4,.35,'#B8BEC6');g1.position.set(-.9,.9,0);
+const g2=gear(10,.95,.78,.22,'#FF8A3D',.6);g2.position.set(1.47,1.55,.05);
+const g3=gear(12,1.1,.93,.25,'#8C939C');g3.position.set(.95,-.85,-.05);
+const steel=new THREE.MeshStandardMaterial({color:'#D9DEE4',metalness:.95,roughness:.18,emissive:'#000'});
+const bear=new THREE.Group();bear.add(new THREE.Mesh(new THREE.TorusGeometry(.9,.12,24,80),steel),new THREE.Mesh(new THREE.TorusGeometry(.5,.1,24,80),steel));
+for(let i=0;i<9;i++){const b=new THREE.Mesh(new THREE.SphereGeometry(.14,32,24),steel),a=i/9*Math.PI*2;b.position.set(Math.cos(a)*.7,Math.sin(a)*.7,0);bear.add(b)}
+bear.position.set(-2.6,-.9,.8);bear.rotation.y=.5;
+const shaft=new THREE.Mesh(new THREE.CylinderGeometry(.18,.18,3.2,32),new THREE.MeshStandardMaterial({color:'#555c66',metalness:.9,roughness:.3}));shaft.rotation.x=Math.PI/2;shaft.position.copy(g1.position);
+root.add(g1,g2,g3,bear,shaft);root.position.y=-.35;
+const V=buildValve(THREE);V.group.position.y=-1.1;V.group.scale.setScalar(1.05);scene.add(V.group);
+const MAPS={engranajes:{grande:g1,pinon:g2,conducido:g3,rodamiento:bear},valvula:V.parts};let cur='valvula',map=MAPS[cur];
+function setModel(m){cur=m;map=MAPS[m];PIECES=MODELS[m];root.visible=m==='engranajes';V.group.visible=m==='valvula';
+ document.querySelectorAll('.tab').forEach(b=>b.setAttribute('aria-pressed',b.dataset.m===m));
+ chips.innerHTML=PIECES.map(p=>`<button class="chip" id="chip-${p.id}" data-id="${p.id}" aria-pressed="false"><i style="background:${p.dot}"></i>${p.name}</button>`).join('');show(PIECES[0].id)}
+document.getElementById('tabs').addEventListener('click',e=>{const b=e.target.closest('.tab');if(b)setModel(b.dataset.m)});
+const grid=new THREE.GridHelper(40,60,'#FF8A3D','#2A3038');grid.position.y=-3.4;grid.material.transparent=true;grid.material.opacity=.3;scene.add(grid);
+const pg=new THREE.BufferGeometry(),N=300,pos=new Float32Array(N*3);for(let i=0;i<N*3;i++)pos[i]=(Math.random()-.5)*(i%3==1?10:14);
+pg.setAttribute('position',new THREE.BufferAttribute(pos,3));const pts=new THREE.Points(pg,new THREE.PointsMaterial({color:'#FFB07A',size:.035,transparent:true,opacity:.6}));scene.add(pts);
+const ctl=new OrbitControls(cam,renderer.domElement);ctl.enableDamping=true;ctl.enablePan=false;ctl.minDistance=6;ctl.maxDistance=20;ctl.autoRotate=true;ctl.autoRotateSpeed=1.2;ctl.target.set(0,0,0);
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;if(reduce)ctl.autoRotate=false;
+ctl.addEventListener('start',()=>{ctl.autoRotate=false;hint.classList.add('off')});
+let sel=null;function select(id){sel=id;Object.values(MAPS).forEach(mp=>Object.entries(mp).forEach(([k,o])=>o.traverse(m=>{if(m.material&&m.material.emissive)m.material.emissive.set(mp===map&&k===id?'#3a1a05':'#000')})));
+ // steel material is shared by bearing parts only
+ }
+const ray=new THREE.Raycaster(),ptr=new THREE.Vector2();let down=null;
+renderer.domElement.addEventListener('pointerdown',e=>down=[e.clientX,e.clientY]);
+renderer.domElement.addEventListener('pointerup',e=>{if(!down||Math.hypot(e.clientX-down[0],e.clientY-down[1])>6)return;
+ const r=renderer.domElement.getBoundingClientRect();ptr.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);ray.setFromCamera(ptr,cam);
+ const hit=ray.intersectObjects(Object.values(map),true)[0];if(!hit)return;
+ const id=Object.keys(map).find(k=>{let o=hit.object;while(o){if(o===map[k])return true;o=o.parent}return false});
+ if(id){show(id);hint.classList.add('off');document.getElementById('card').scrollIntoView({behavior:reduce?'auto':'smooth',block:'nearest'})}});
+chips.addEventListener('click',e=>{const b=e.target.closest('.chip');if(b)show(b.dataset.id)});
+function size(){const w=stage.clientWidth,h=stage.clientHeight;renderer.setSize(w,h,false);cam.aspect=w/h;cam.position.z=w<600?Math.max(cam.position.z,15):cam.position.z;cam.updateProjectionMatrix()}
+new ResizeObserver(size).observe(stage);size();
+const clock=new THREE.Clock();
+function loop(){const t=clock.getElapsedTime(),w=reduce?0:t*.6;g1.rotation.z=w;g2.rotation.z=-w*1.8+.16;g3.rotation.z=-w*1.5+.13;bear.rotation.z=-w*1.2;V.animate(t);
+ pts.rotation.y=t*.04;const s=sel?map[sel]:null;Object.values(MAPS).flatMap(Object.values).forEach(o=>{const k=o===s?1.08:1;o.scale.lerp(new THREE.Vector3(k,k,k),.12)});
+ ctl.update();renderer.render(scene,cam);requestAnimationFrame(loop)}
+document.getElementById('loading').remove();setModel('valvula');loop();
+window.__ready=true;
+}
+</script>
+</body>
+</html>

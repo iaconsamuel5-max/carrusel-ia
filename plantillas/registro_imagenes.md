@@ -7,3 +7,4 @@ Fecha | Tipo | Frase principal
 2026-11-13 | pareja | Le pedí a la IA que describiera a mi pareja (Error 404)
 2026-11-13 | postales | Piedra del Peñol, Guatapé (publicada)
 2026-11-14 | postales | Torre Eiffel, París (1889, 18.038 piezas, sensores de fibra óptica)
+2026-11-14 | instrumentacion | 3D animado | Válvula de control con actuador, posicionador y manómetro (también en el Laboratorio 3D interactivo)
