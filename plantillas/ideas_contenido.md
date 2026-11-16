@@ -54,3 +54,25 @@ La meta de cada Reel y carrusel: que la persona le dé ME GUSTA, lo GUARDE, lo R
 8. Herramientas: prioriza gratis o baratas y fáciles (ChatGPT, Claude, Gemini, Canva, WhatsApp Business, Excel/Google Sheets) para el pequeño negocio; menciona las avanzadas para empresas.
 9. Nada de promesas exageradas de dinero ni datos inventados. Ejemplos realistas, sin cifras de ventas inventadas (si das números, que sean ejemplos claramente marcados como "ejemplo").
 10. Cierre recurrente: "¿Quieres aplicarlo en tu negocio? Escríbeme INFO".
+
+## LECCIONES DE LAS ESTADÍSTICAS REALES (2026-11-16) — OBLIGATORIO
+Datos de Instagram:
+- Reel cómic "El chocolate que inventó el microondas": 171 vistas, 108 personas, 6 s promedio, omisiones 53,7 %, 0 interacciones.
+- Reel 3D "La válvula que avisa antes de fallar": 123 vistas, 102 personas, 4 s promedio, omisiones 75,5 %, 0 interacciones. La mitad se fue en el primer segundo; ~15 % llegó al final (8 s).
+- 83 % de las vistas vienen de la pestaña Reels (gente que NO sigue la cuenta). El Reel se juega en el primer segundo.
+Conclusiones: historia humana + humor retiene más que lo técnico; la jerga ("posicionador") espanta; nadie interactúa porque no se le pide nada fácil.
+
+Reglas nuevas para TODO Reel:
+1. Gancho en el segundo 0: texto grande arriba con un problema o pregunta del negocio ("¿Tu nevera gasta más luz de la cuenta?", "Esto le hace perder plata a tu tienda"). Movimiento desde el primer cuadro; nada de introducciones lentas.
+2. Tema técnico SIEMPRE traducido a dolor de negocio: la válvula → "la nevera/la moto/el horno que avisa antes de dañarse". Cero jerga en el gancho.
+3. Duración 7–10 s, una sola idea, letra grande (máx. ~12 palabras en pantalla a la vez). Último cuadro que empalme con el primero (loop) para que se repita.
+4. Llamado a la acción fácil, dentro del video Y en el texto: "Comenta PROMPT y te lo envío" (palabra clave en mayúscula), "Guárdalo para cuando lo necesites", "Envíaselo a quien tiene negocio". Nunca "link en mi perfil" como única acción.
+5. Texto (caption): 1.ª línea = gancho + pregunta para comentar ("¿Tú qué negocio tienes? Te digo cómo usarlo 👇"). Luego el valor en 3–4 líneas. Hashtags: 4–6 de nicho (#IAconSamuel #EmprendedoresColombia #NegociosMedellin #InteligenciaArtificial #PequeñosNegocios) en vez de genéricos.
+6. Series con número para que vuelvan: "Prompt para tu negocio #N", "Inventos por accidente #N". Revisar registro_imagenes.md para continuar la numeración.
+7. Humor y curiosidad (como el cómic) al menos 3 veces por semana; el lunes 3D también con gancho de negocio, no de catálogo industrial.
+
+Reglas nuevas para carruseles:
+- Lámina 1: solo el gancho (máx. 8 palabras) + promesa ("En 7 láminas aplicas esto hoy").
+- Lámina 2: el ejemplo del negocio pequeño (tienda/empanadas/taller) de inmediato.
+- Última lámina: "Guárdalo 📌 · Compártelo con quien tiene negocio · Comenta INFO".
+- Caption con pregunta para comentar en la primera línea.
