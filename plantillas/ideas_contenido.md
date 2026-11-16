@@ -33,3 +33,24 @@ Samuel compartió estas publicaciones porque los Reels con este tipo de contenid
 - Refrigeración / HVAC: herramientas, visor de líquido, sobrecalentamiento y subenfriamiento, errores comunes.
 - Tecnología explicada simple: Docker, nube, APIs, bases de datos, SQL, Power BI.
 - Derechos y deberes laborales en Colombia (información general verificada).
+
+## PRIORIDAD MÁXIMA: público real y contenido que se comparte (instrucción de Samuel, 2026-11-15)
+La meta de cada Reel y carrusel: que la persona le dé ME GUSTA, lo GUARDE, lo REENVÍE a alguien y quiera verlo varias veces.
+
+### Para quién es (siempre pensar en ellos)
+- El tendero de barrio, la señora de las empanadas, el de los buñuelos, la panadería, la peluquería, el pequeño taller de mecánica o de motos, el técnico independiente.
+- El pequeño y mediano empresario (ferreterías, restaurantes, distribuidoras, talleres, transporte).
+- El gran empresario y los jefes de planta, mantenimiento y operaciones.
+- Trabajadores, técnicos e ingenieros que quieren crecer.
+
+### Reglas para que la gente lo aplique y lo comparta
+1. TODO tema termina en algo APLICABLE HOY: un paso concreto, un prompt listo para copiar, una fórmula con ejemplo, una lista de chequeo.
+2. Ejemplos con negocios reales colombianos. Ejemplos: "Si vendes empanadas: pídele a la IA… [prompt]", "En tu taller de motos: usa esta fórmula para saber cuándo cambiar…", "Para tu tienda: así calculas el inventario que se te pierde". Rota el tipo de negocio cada día.
+3. Cuando el tema sea técnico (KPIs, fórmulas, Docker, instrumentación), incluye UNA versión para el pequeño negocio y UNA para la empresa grande (ej.: MTBF para la nevera de la tienda vs. para la planta).
+4. Lenguaje sencillo, cercano y colombiano, sin tecnicismos sin explicar. Que lo entienda alguien sin estudios técnicos y que el experto igual lo valore.
+5. Ganchos que paran el scroll: "Si tienes un negocio pequeño, guarda esto", "El error que le cuesta plata a tu taller", "3 prompts que le ahorran 1 hora al día a cualquier tendero", "Esto lo usan las grandes empresas y tú lo puedes usar gratis".
+6. Motivos para REENVIAR: "Envíaselo a ese amigo que tiene negocio", "Compártelo con el de mantenimiento", "Etiqueta a quien vende empanadas". Úsalo en el texto y en la última lámina o el cierre del Reel.
+7. Motivos para VOLVER A VERLO: listas que no se alcanzan a leer de una (invita a pausar o guardar), datos sorprendentes, antes/después, comparaciones, un remate o dato final inesperado.
+8. Herramientas: prioriza gratis o baratas y fáciles (ChatGPT, Claude, Gemini, Canva, WhatsApp Business, Excel/Google Sheets) para el pequeño negocio; menciona las avanzadas para empresas.
+9. Nada de promesas exageradas de dinero ni datos inventados. Ejemplos realistas, sin cifras de ventas inventadas (si das números, que sean ejemplos claramente marcados como "ejemplo").
+10. Cierre recurrente: "¿Quieres aplicarlo en tu negocio? Escríbeme INFO".
