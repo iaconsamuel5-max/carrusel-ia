@@ -1,0 +1,40 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1920px;background:#07070F;color:#F4F1EA;font-family:Inter,sans-serif;overflow:hidden;position:relative}
+#grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,61,203,.12) 2px,transparent 2px),linear-gradient(90deg,rgba(34,230,255,.10) 2px,transparent 2px);background-size:72px 72px}
+#glow{position:absolute;width:1100px;height:1100px;border-radius:50%;background:radial-gradient(circle,rgba(255,61,203,.25),transparent 60%);left:-200px;top:-300px}
+.scan{position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.18) 0 2px,transparent 2px 4px);z-index:5;pointer-events:none}
+.wrap{position:absolute;left:80px;right:80px;top:200px;bottom:440px;display:flex;flex-direction:column;gap:30px}
+.chip{align-self:flex-start;border:3px solid #22E6FF;color:#22E6FF;font-weight:800;font-size:30px;letter-spacing:4px;padding:10px 24px;border-radius:999px;text-shadow:0 0 12px #22E6FF;box-shadow:0 0 18px rgba(34,230,255,.4)}
+h1{font-size:92px;line-height:1.02;font-weight:900;letter-spacing:-2px}
+.m{color:#FF3DCB;text-shadow:0 0 22px rgba(255,61,203,.7)}.c{color:#22E6FF;text-shadow:0 0 18px rgba(34,230,255,.6)}
+.card{background:rgba(18,16,40,.88);border:2px solid rgba(34,230,255,.55);border-radius:26px;padding:26px 30px;display:flex;gap:24px;box-shadow:0 0 26px rgba(34,230,255,.15)}
+.n{flex:none;width:76px;height:76px;border-radius:18px;background:#FF3DCB;color:#07070F;font-weight:900;font-size:48px;display:grid;place-items:center;box-shadow:0 0 22px rgba(255,61,203,.6)}
+.who{font-size:34px;font-weight:800;color:#22E6FF;margin-bottom:8px}
+.pr{font-size:31px;line-height:1.38;color:#EDE8FF}
+.end{position:absolute;left:80px;right:80px;top:560px;text-align:center;display:flex;flex-direction:column;gap:30px;align-items:center}
+.end h1{font-size:104px}.end .s{font-size:44px;line-height:1.35;color:#CFC4EE}
+.box{border:3px solid #FF3DCB;border-radius:24px;padding:28px 40px;font-size:46px;font-weight:800;box-shadow:0 0 30px rgba(255,61,203,.45)}
+</style></head><body><div id="glow"></div><div id="grid"></div>
+<div class="wrap" id="w">
+ <div class="chip" id="chip">IA PARA TU NEGOCIO</div>
+ <h1 id="t">3 prompts que le ahorran <span class="m">tiempo</span> a cualquier <span class="c">negocio</span></h1>
+ <div class="card" id="i1"><div class="n">1</div><div><div class="who">Si vendes empanadas o buñuelos</div><div class="pr">"Escribe 5 mensajes cortos para WhatsApp ofreciendo [producto] con domicilio en [barrio]. Tono amable y cercano."</div></div></div>
+ <div class="card" id="i2"><div class="n">2</div><div><div class="who">Si tienes una tienda</div><div class="pr">"Estas son mis ventas de la semana: [pega la lista]. ¿Qué se vende más, qué casi no se mueve y qué debo pedir menos?"</div></div></div>
+ <div class="card" id="i3"><div class="n">3</div><div><div class="who">Si tienes un taller</div><div class="pr">"Una moto [modelo] llega con [síntoma]. Dame una lista de chequeo para diagnosticarla, de lo más simple a lo más complejo."</div></div></div>
+</div>
+<div class="end" id="end"><h1>Guárdalo y <span class="m">compártelo</span></h1><div class="s">Envíaselo a ese amigo<br>que tiene negocio</div><div class="box">@samuelsanchez1407</div><div class="s" style="font-size:36px">¿Lo quieres aplicar? Escríbeme <b class="c">INFO</b></div></div>
+<div class="scan"></div>
+<script>
+const $=id=>document.getElementById(id);
+function show(el,t0,t){const k=Math.max(0,Math.min(1,(t-t0)/0.45));const e=1-Math.pow(1-k,3);el.style.opacity=e;el.style.transform=`translateX(${(1-e)*-80}px)`}
+window.draw=(t)=>{
+ $('grid').style.backgroundPosition=`0 ${t*40}px`;$('glow').style.opacity=.7+.3*Math.sin(t*2);
+ const out=t>=11.6;$('w').style.opacity=out?Math.max(0,1-(t-11.6)/0.4):1;
+ show($('chip'),0.1,t);show($('t'),0.3,t);show($('i1'),2.4,t);show($('i2'),5.0,t);show($('i3'),7.6,t);
+ const e=$('end');const k=Math.max(0,Math.min(1,(t-12.0)/0.5));e.style.opacity=k;e.style.transform=`scale(${0.9+0.1*k})`;
+ const g=(t>11.55&&t<11.75);document.body.style.filter=g?'hue-rotate(90deg) saturate(2)':'none';
+ document.body.style.transform=g?`translateX(${(Math.sin(t*300))*14}px)`:'none';
+};
+window.ready=true;
+</script></body></html>
