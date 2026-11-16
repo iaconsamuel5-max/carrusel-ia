@@ -89,3 +89,11 @@ Reglas nuevas para carruseles:
 - Primeras interacciones: "5 profesiones, 5 prompts" (3 compartidos: habla de TU trabajo) y "pareja" (1 me gusta: emoción). Lo personal y lo emocional mueve a la gente.
 - Hubo 3 publicaciones repetidas de "Comandos de IA": NUNCA repetir un carrusel ya publicado.
 - Cada publicación va también a la historia de Instagram (automática) y Samuel la comparte en la historia de Facebook (recordatorio en el correo).
+
+## MÚSICA, ANIMACIÓN Y DIBUJOS SIEMPRE (pedido de Samuel, 2026-11-16) — MANDA sobre los textos de las tareas
+- Samuel quiere que TODO llame la atención por música, animación, dibujos e interactividad.
+- Tarea de la TARDE: siempre Reel con música (ya es así). El PLAN B ya no es imagen muda: si el video complejo falla, haz un video simple de 8-10 s con la imagen fija animada (zoom suave, elementos que entran, partículas) + música de plantillas/estilos/music.py + sonido ancla, y publícalo como Reel e historia. Solo si eso también falla, imagen fija.
+- Tarea de la MAÑANA (carrusel): Instagram no deja poner música a un carrusel publicado por API, así que:
+  1. El carrusel se publica igual (sirve para guardar), con dibujos SVG grandes y llamativos en cada lámina.
+  2. La HISTORIA de Instagram deja de ser imagen: crea historia_01.mp4 vertical 1080×1920, 12-15 s, con las láminas pasando una a una (deslizamiento + leve zoom, ~1,5 s cada una), arriba "NUEVO CARRUSEL", abajo "Desliza las 8 láminas en mi perfil · @samuelsanchez1407", música de music.py ('corporate' o 'synthwave') + sonido ancla. Render: cuadros JPEG por tubería a ffmpeg (libx264, -preset veryfast, -crf 18, yuv420p, 30 fps), audio con -c:v copy -c:a aac -shortest -movflags +faststart. Súbelo en AAAA-MM-DD/historia_01.mp4 y publícalo con create_story {"video_url": ...}. Si falla, usa historia_01.jpg.
+  3. En el correo recuerda a Samuel: "Si quieres, desde la app puedes compartir el carrusel en tu historia y añadirle una canción con el sticker de música".
