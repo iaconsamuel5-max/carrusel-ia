@@ -76,3 +76,8 @@ Reglas nuevas para carruseles:
 - Lámina 2: el ejemplo del negocio pequeño (tienda/empanadas/taller) de inmediato.
 - Última lámina: "Guárdalo 📌 · Compártelo con quien tiene negocio · Comenta INFO".
 - Caption con pregunta para comentar en la primera línea.
+
+### Lección imagen fija (postal Torre Eiffel, 2026-11-16)
+- 26 vistas, 13 personas, 0 interacciones. 100 % desde el Feed y 0 vistas de NO seguidores: la imagen fija solo la ven los pocos seguidores; el Reel llega a 100–170 personas nuevas.
+- Regla: nunca publicar imagen fija sola en Instagram. Todo lo de la tarde va como Reel (la postal del sábado también, con movimiento y música). La imagen fija solo como plan B si falla el video.
+- Postales: cerrar con pregunta fácil de responder: "¿Ya fuiste? ¿A qué ciudad viajamos la próxima? Comenta 👇" y un dato que conecte con negocio ("Lo que tu negocio puede aprender de...").
