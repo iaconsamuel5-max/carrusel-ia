@@ -81,3 +81,11 @@ Reglas nuevas para carruseles:
 - 26 vistas, 13 personas, 0 interacciones. 100 % desde el Feed y 0 vistas de NO seguidores: la imagen fija solo la ven los pocos seguidores; el Reel llega a 100–170 personas nuevas.
 - Regla: nunca publicar imagen fija sola en Instagram. Todo lo de la tarde va como Reel (la postal del sábado también, con movimiento y música). La imagen fija solo como plan B si falla el video.
 - Postales: cerrar con pregunta fácil de responder: "¿Ya fuiste? ¿A qué ciudad viajamos la próxima? Comenta 👇" y un dato que conecte con negocio ("Lo que tu negocio puede aprender de...").
+
+### Lección del perfil completo (2026-11-16)
+- Videos REALES grabados por Samuel: 721, 159 y 66 vistas, lo mejor del perfil. Lo auténtico (lugar real, equipo real como el manómetro) gana a lo diseñado. Si en referencias/videos_samuel/ hay clips de Samuel, úsalos como fondo del Reel con el texto encima.
+- Reels diseñados: 60–172 vistas. Carruseles: 8–30 vistas, salvo "Comandos de IA que te ahorran horas" (104): práctico, copiar y pegar, con nombres que todos reconocen (ChatGPT, Gemini, Copilot, Claude).
+- Carruseles de noticias, agentes, errores de proyectos o plantas de energía: ~20 vistas. Demasiado de directivo/industria para el público general. Usarlos poco y siempre traducidos a negocio pequeño.
+- Primeras interacciones: "5 profesiones, 5 prompts" (3 compartidos: habla de TU trabajo) y "pareja" (1 me gusta: emoción). Lo personal y lo emocional mueve a la gente.
+- Hubo 3 publicaciones repetidas de "Comandos de IA": NUNCA repetir un carrusel ya publicado.
+- Cada publicación va también a la historia de Instagram (automática) y Samuel la comparte en la historia de Facebook (recordatorio en el correo).
