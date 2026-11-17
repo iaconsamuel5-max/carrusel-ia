@@ -10,3 +10,4 @@ Fecha | Tipo | Frase principal
 2026-11-14 | instrumentacion | 3D animado | Válvula de control con actuador, posicionador y manómetro (también en el Laboratorio 3D interactivo)
 2026-11-15 | historia de inventos (humor) | cómic animado 4:5 | Microondas: Percy Spencer, chocolate derretido junto al magnetrón (1945), Radarange 1947
 2026-11-16 | emprendimiento / tienda de barrio | Reel 3D (idea de negocio, lunes) | Estante 3D que avisa cuándo pedir gaseosa: punto de reorden 8×2+4=20 (ejemplo ilustrativo), CTA comenta 3D
+2026-11-17 | carrusel (mañana) | prompts IA + WhatsApp Business | Que ChatGPT te escriba los WhatsApp: 4 prompts + 3 funciones gratis (bienvenida, ausencia, respuestas rápidas), caso empanadas, CTA comenta WHATSAPP
