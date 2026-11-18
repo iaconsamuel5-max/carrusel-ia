@@ -114,3 +114,11 @@ D) TEMAS QUE MÁS SE MUEVEN EN IA (noviembre 2026): listas grandes de prompts po
 E) LLAMADO A LA ACCIÓN: el contenido completo va dentro del carrusel; la acción principal es "GUÁRDALO para usarlo" y "ENVÍASELO a quien tiene negocio" (los envíos por mensaje son la señal que más pesa en 2026). "Comenta X" solo como secundario.
 F) TARDE (Reel): 9:16 real, máximo 10 s, UNA frase gancho gigante + una animación llamativa (dibujo que se traza solo, objeto que se transforma, contador, antes/después), poco texto, música con ritmo. Usar el mismo personaje ingeniero animado (parpadea, señala, aparece con el casco). Variar estilos y colores claros/oscuros para no verse repetido.
 G) Nunca dos publicaciones el mismo día con la misma plantilla visual.
+
+## DECISIÓN DE SAMUEL 2026-11-18 (MANDA): carrusel "Bitácora" automático + lámina ANIMADA en la historia
+- Plantillas aprobadas: plantillas/bitacora/gen.py (estilo libreta cuadriculada, títulos 'Permanent Marker', textos 'Kalam', resaltador #FFE14D, naranja #FF6B2C, personaje ingeniero mascot(pose) con poses point/think/tablet/thumbs) y plantillas/bitacora/anim.py (lámina animada). Ejemplos aprobados: lamina_01.jpg, lamina_03.jpg, lamina_08.jpg, lamina_03_animada.mp4. Fuentes: `npm i @fontsource/permanent-marker @fontsource/kalam @fontsource/inter` en la carpeta de trabajo (las plantillas usan rutas relativas node_modules/@fontsource y /home/claude/...: ajústalas).
+- MAÑANA:
+  1. Carrusel de 8 láminas en IMÁGENES con el estilo Bitácora → create_carousel_post (automático).
+  2. Escoge la lámina más visual del carrusel y créala ANIMADA (como anim.py): todo quieto menos un recuadro con borde naranja en el centro donde pasa algo (chat que se escribe solo, gráfica que crece, prompt que se teclea y aparece la respuesta, antes/después, contador, dibujo que se traza). 8-10 s, 30 fps, música de music.py + sonido ancla. Conviértela a historia 1080×1920 con ffmpeg (pad=1080:1920:0:285:color=#F7F3EA y arriba el texto "NUEVO CARRUSEL · desliza en mi perfil") y publícala con create_story {"video_url": ...}. Si falla, historia con imagen.
+  3. Nunca publiques un Reel hecho de láminas.
+- TARDE: el Reel 9:16 puede usar también el estilo Bitácora y el personaje algunos días (alternar con otros estilos para no repetir).
