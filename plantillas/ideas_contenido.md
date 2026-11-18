@@ -97,3 +97,20 @@ Reglas nuevas para carruseles:
   1. El carrusel se publica igual (sirve para guardar), con dibujos SVG grandes y llamativos en cada lámina.
   2. La HISTORIA de Instagram deja de ser imagen: crea historia_01.mp4 vertical 1080×1920, 12-15 s, con las láminas pasando una a una (deslizamiento + leve zoom, ~1,5 s cada una), arriba "NUEVO CARRUSEL", abajo "Desliza las 8 láminas en mi perfil · @samuelsanchez1407", música de music.py ('corporate' o 'synthwave') + sonido ancla. Render: cuadros JPEG por tubería a ffmpeg (libx264, -preset veryfast, -crf 18, yuv420p, 30 fps), audio con -c:v copy -c:a aac -shortest -movflags +faststart. Súbelo en AAAA-MM-DD/historia_01.mp4 y publícalo con create_story {"video_url": ...}. Si falla, usa historia_01.jpg.
   3. En el correo recuerda a Samuel: "Si quieres, desde la app puedes compartir el carrusel en tu historia y añadirle una canción con el sticker de música".
+
+## ESTRATEGIA 2026-11-18 (MANDA SOBRE TODO LO ANTERIOR) — diagnóstico de la caída
+Datos: los 3 últimos posts tuvieron 2, 5 y 5 vistas (Reel "nevera" de láminas, Reel neón "luz apagado", Reel de láminas "WhatsApp"). Antes los Reels tenían 60–172.
+Causas probables:
+1. La mañana dejó de publicar CARRUSEL y publicó un REEL hecho de láminas pasando (portada "01/08"). Un video de láminas con mucho texto no se alcanza a leer: la gente pasa de largo en 1 s, el Reel muere en la prueba inicial y además baja el promedio de la cuenta. ERROR: no repetir.
+2. Dos Reels diarios con la misma plantilla oscura (#0E1726, texto denso) = Instagram ve "más de lo mismo" y la cuenta pierde fuerza. Menos cantidad, más impacto.
+3. "Comenta PALABRA" sin entregar nada real ni comunidad aún = nadie comenta.
+4. Diseño oscuro y serio, sin personaje ni cara: no frena el dedo.
+
+REGLAS NUEVAS:
+A) MAÑANA = CARRUSEL REAL (create_carousel_post), nunca Reel de láminas. 7 a 10 láminas. La historia de Instagram sí puede ser el video de láminas con música.
+B) NUEVO ESTILO VISUAL "BITÁCORA DEL INGENIERO" (inspirado en lo que hoy se mueve, sin copiar a nadie): fondo claro de hoja cuadriculada o de libreta (#F7F3EA con cuadrícula tenue), títulos enormes a mano alzada (fuente tipo marcador: 'Permanent Marker' o 'Kalam' de Google Fonts) con resaltador amarillo (#FFE14D) detrás de la palabra clave, flechas y subrayados naranja (#FF6B2C) dibujados, numeración "1/8" a mano arriba a la derecha, "Desliza →" abajo. Tarjetas tipo cuadrícula 2×3 con bordes naranja para listas de prompts.
+C) PERSONAJE DE MARCA: un ingeniero caricatura dibujado en SVG por ti (casco blanco, gafas, camisa de trabajo azul, tableta o llave en la mano), SIEMPRE el mismo, en distintas poses por lámina. Es la "cara" de IA con Samuel hasta que Samuel envíe sus videos. No es una persona real ni copia de otro personaje.
+D) TEMAS QUE MÁS SE MUEVEN EN IA (noviembre 2026): listas grandes de prompts por herramienta ("20 prompts de Claude/ChatGPT/Gemini para tu negocio"), "skills"/funciones nuevas de Claude, ChatGPT y Gemini explicadas simple, automatizar WhatsApp/ventas/inventario, crear imágenes y videos con IA, agentes que hacen tareas solos explicados para negocio pequeño, "antes vs. después con IA". Nombre de la herramienta en el título siempre. Valor alto = mucho contenido útil que da pena no guardar.
+E) LLAMADO A LA ACCIÓN: el contenido completo va dentro del carrusel; la acción principal es "GUÁRDALO para usarlo" y "ENVÍASELO a quien tiene negocio" (los envíos por mensaje son la señal que más pesa en 2026). "Comenta X" solo como secundario.
+F) TARDE (Reel): 9:16 real, máximo 10 s, UNA frase gancho gigante + una animación llamativa (dibujo que se traza solo, objeto que se transforma, contador, antes/después), poco texto, música con ritmo. Usar el mismo personaje ingeniero animado (parpadea, señala, aparece con el casco). Variar estilos y colores claros/oscuros para no verse repetido.
+G) Nunca dos publicaciones el mismo día con la misma plantilla visual.
