@@ -12,3 +12,4 @@ Fecha | Tipo | Frase principal
 2026-11-16 | emprendimiento / tienda de barrio | Reel 3D (idea de negocio, lunes) | Estante 3D que avisa cuándo pedir gaseosa: punto de reorden 8×2+4=20 (ejemplo ilustrativo), CTA comenta 3D
 2026-11-17 | carrusel (mañana) | prompts IA + WhatsApp Business | Que ChatGPT te escriba los WhatsApp: 4 prompts + 3 funciones gratis (bienvenida, ausencia, respuestas rápidas), caso empanadas, CTA comenta WHATSAPP
 2026-11-17 | energía / ahorro en el negocio | Reel cyberpunk neón (martes) | Consumo en espera: cargador, TV/decodificador, PC/impresora; regleta con interruptor; 5-10 % de la luz de un hogar (Berkeley Lab); CTA comenta LUZ
+2026-11-18 | Reel (mañana) | KPIs de mantenimiento + IA | ¿Cada cuánto se te daña la nevera?: MTBF, MTTR y disponibilidad con ejemplo ilustrativo (4.260 h/3 = 1.420 h; 20 h; 98,6 %), prompt para ChatGPT/Gemini/Claude/Copilot, tienda→planta, CTA comenta NEVERA
