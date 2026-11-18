@@ -122,3 +122,13 @@ G) Nunca dos publicaciones el mismo día con la misma plantilla visual.
   2. Escoge la lámina más visual del carrusel y créala ANIMADA (como anim.py): todo quieto menos un recuadro con borde naranja en el centro donde pasa algo (chat que se escribe solo, gráfica que crece, prompt que se teclea y aparece la respuesta, antes/después, contador, dibujo que se traza). 8-10 s, 30 fps, música de music.py + sonido ancla. Conviértela a historia 1080×1920 con ffmpeg (pad=1080:1920:0:285:color=#F7F3EA y arriba el texto "NUEVO CARRUSEL · desliza en mi perfil") y publícala con create_story {"video_url": ...}. Si falla, historia con imagen.
   3. Nunca publiques un Reel hecho de láminas.
 - TARDE: el Reel 9:16 puede usar también el estilo Bitácora y el personaje algunos días (alternar con otros estilos para no repetir).
+
+## IDEAS QUE ELIGE SAMUEL (desde 2026-11-19) — MANDA para elegir el tema del día
+Cada noche (~7:45 p. m.) la tarea "Ideas y tendencias para mañana" le envía a Samuel 3 ideas por correo (asunto "Ideas para mañana – AAAA-MM-DD") y las guarda en plantillas/ideas_propuestas.md con la ★ recomendada.
+ANTES de elegir tema, las tareas de la MAÑANA y de la TARDE deben:
+1. Leer en plantillas/ideas_propuestas.md el bloque para la fecha de hoy.
+2. Buscar con Gmail (search_threads) el hilo con asunto "Ideas para mañana – <fecha de hoy>" y leer si Samuel (capital692001@gmail.com) respondió: un número (1, 2, 3), su propia idea o cambios.
+3. MAÑANA (carrusel): usar la idea que eligió Samuel; si no respondió, la ★ recomendada. Aplicar sus cambios.
+4. TARDE (Reel): usar otra de las 3 ideas que encaje como Reel (o la misma en otro formato si Samuel lo pidió), respetando el estilo del día.
+5. En el correo de publicación decir: "Hoy publiqué la idea N que elegiste" (o "la recomendada, porque no alcanzaste a responder").
+Si no existe propuesta para hoy, elegir el tema como siempre.
