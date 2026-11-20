@@ -1,0 +1,14 @@
+TÍTULO:
+Cómo escribir un buen prompt: el plano de 4 partes #Shorts
+
+DESCRIPCIÓN:
+¿ChatGPT, Gemini o Claude te responden genérico? Usa el plano del prompt: 1) ROL, 2) TAREA, 3) CONTEXTO y 4) FORMATO. Es la estructura que recomienda la guía de prompts de Google (persona, tarea, contexto y formato) y sirve en cualquier IA.
+Ejemplo: "Eres el contador de mi panadería de barrio. Ayúdame a ponerle precio al pan. Respóndeme en una tabla en pesos."
+¿Para qué lo vas a usar tú? Cuéntamelo en los comentarios.
+Sígueme para más IA aplicada.
+Instagram: https://www.instagram.com/samuelsanchez1407
+LinkedIn: página "IA con Samuel"
+#IAconSamuel #InteligenciaArtificial #Shorts #ChatGPT #Prompts
+
+ETIQUETAS:
+cómo escribir un prompt, prompt, ChatGPT en español, Gemini, Claude, inteligencia artificial, prompts para negocios, IA para emprendedores, tutorial ChatGPT, IA con Samuel, ingeniería de prompts
