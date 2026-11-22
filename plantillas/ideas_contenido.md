@@ -155,3 +155,15 @@ Reglas LinkedIn:
 4. Temas banco: conversiones (psi-bar, °C-°F, GPM-m³/h), 4-20 mA y HART, placa de motor, triángulo de potencia, factor de potencia, chiller/TR, calidad de agua, válvulas, PID explicado, curvas de bomba, OEE y capacidad real, KPIs, termografía, vibraciones, calibración, seguridad intrínseca, símbolos P&ID.
 5. Exactitud: cero errores en fórmulas y unidades (coma decimal consistente). Nunca copiar diseños, logos, tablas de periódicos ni datos de otros países como si fueran de Colombia.
 6. Texto: gancho en la primera línea (pregunta o dato), 3-5 líneas, pregunta final, "Guárdala para el taller" y 3-5 hashtags.
+
+## LECCIONES SEMANA 2026-11-22 (informe automático)
+Datos 16–22 nov: 13 publicaciones en Instagram (8 Reels, 5 carruseles), 460 vistas de cuenta (−26 % vs. semana anterior, que tuvo el pico del 14-nov), 0 guardados, 0 compartidos, 0 comentarios, seguidores 76 (sin cambio neto). Muestra pequeña: tomar como pruebas, no como verdades.
+
+Instagram:
+1. GANCHO DE OBJETO REAL, NO DE TEXTO: el único Reel que llegó a gente nueva fue el 3D "¿Se te acaba la gaseosa?" (145 vistas, 112 personas, 110 no seguidores, omisión 52 %). Los Reels que abrían con plano/pizarra o láminas de texto (WhatsApp, "plano del prompt", Google Vids) tuvieron 100 % de omisión. Regla: el primer cuadro del Reel muestra un OBJETO cotidiano en movimiento (3D o realista: gaseosa, nevera, celular, factura) con máximo 5 palabras encima; nada de pizarras o listas en los primeros 3 s. Meta: omisión < 60 %.
+2. HÁBLALE DE ÉL MISMO: el 2.º mejor fue "¿Qué recuerda la IA de ti?" (31 vistas, 26 personas). Las preguntas sobre la vida o los datos del espectador ("de ti", "tu celular", "tu factura") superaron a las de proceso de empresa (nevera MTBF 4, WhatsApp 5). Regla: el gancho va en segunda persona sobre algo que el espectador ya tiene o vive.
+3. ESTILO 3D AL MENOS 2 VECES POR SEMANA EN LA TARDE: mientras no haya videos reales de Samuel, alternar el Reel 3D (que sí empujó Instagram) con los estilos animados; no repetir el estilo pizarra/plano dos días seguidos. Revisar el domingo si el 3D vuelve a superar a los demás.
+4. CARRUSELES = SOLO SEGUIDORES: los 5 carruseles alcanzaron 2–5 personas (todas seguidoras) y 0 guardados. Mientras la cuenta tenga < 100 seguidores, la portada del carrusel debe ser la lámina más llamativa (objeto/personaje grande + pregunta de 5 palabras) y la historia animada debe mostrar el resultado, no el título.
+
+LinkedIn (página, 1 seguidor):
+5. La presentación "Hoy nace IA con Samuel" sacó 88 impresiones (57 miembros); el post de datos Fluke, 15. Con 1 seguidor, el alcance depende de que Samuel lo comparta desde su perfil personal. Regla: cada correo de publicación de LinkedIn recuerda a Samuel "compártelo desde tu perfil en la primera hora con una frase tuya", y las fichas técnicas se publican de martes a jueves temprano (6:30–8:00 a. m.), no en fin de semana (hipótesis a validar: la Ficha #1 del domingo lleva 10 impresiones).
