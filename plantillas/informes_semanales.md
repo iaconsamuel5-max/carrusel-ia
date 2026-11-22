@@ -29,7 +29,7 @@
 | 18-nov | Reel láminas | MTBF/MTTR nevera | 4 | 3 | 0 | 0 | 6,6 s | 75 % |
 | 22-nov | Carrusel | ¿Qué dice ChatGPT de tu negocio? | 0 | 0 | 0 | 0 | — | — (publicado hoy) |
 
-Por categoría (vistas promedio): negocio/industria 27 (sin el 3D: 9), tutorial 14, vida diaria 5 (solo "prima"). Comentarios recibidos: 0.
+Por categoría (vistas promedio): negocio/industria 27 (sin el 3D: 7), tutorial 13, vida diaria 5 (solo "prima"). Comentarios recibidos: 0.
 
 ### LinkedIn — página "IA con Samuel"
 | Fecha | Tema | Impresiones | Alcanzados | Clics | Reacc. | Coment. | Compart. | % interacción |
