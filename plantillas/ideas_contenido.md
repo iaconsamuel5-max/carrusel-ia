@@ -167,3 +167,11 @@ Instagram:
 
 LinkedIn (página, 1 seguidor):
 5. La presentación "Hoy nace IA con Samuel" sacó 88 impresiones (57 miembros); el post de datos Fluke, 15. Con 1 seguidor, el alcance depende de que Samuel lo comparta desde su perfil personal. Regla: cada correo de publicación de LinkedIn recuerda a Samuel "compártelo desde tu perfil en la primera hora con una frase tuya", y las fichas técnicas se publican de martes a jueves temprano (6:30–8:00 a. m.), no en fin de semana (hipótesis a validar: la Ficha #1 del domingo lleva 10 impresiones).
+
+## LINKEDIN ANIMADO (decisión de Samuel, 2026-11-22) — MANDA para LinkedIn
+- A Samuel le encantó la "Ficha de campo #1: 4-20 mA" animada (lazo con fuente 24 V, transmisor y multímetro en serie, puntos de corriente circulando, el multímetro y la presión cambian y la fila de la tabla se ilumina). TODAS las publicaciones de LinkedIn deben salir así: ficha técnica ANIMADA.
+- Referencias que trajo (videos de otros creadores, solo inspiración, no copiar): RS-232 vs RS-485, PROFIBUS vs PROFINET vs Modbus TCP/IP, HART vs 4-20 mA, arquitectura SCADA (campo → RTU → HMI → analítica). Patrón: diagrama técnico limpio donde se MUEVE la información (paquetes de datos, corriente, señales, flujos de agua/aire/gas) entre equipos dibujados. Tuvieron 392-2.308 reacciones y 40-255 compartidos.
+- Plantilla aprobada: plantillas/linkedin/ficha_animada_referencia.py (canvas con draw(t), lazo, puntos que circulan, tabla que se ilumina, música). Ejemplo: plantillas/linkedin/ficha_animada_ejemplo.jpg.
+- Formato: video 1080×1440 (3:4), 10-15 s, 30 fps, música suave (music.py 'corporate') + sonido ancla, loop limpio. Debe entenderse SIN sonido. Además una imagen fija (un cuadro representativo) para la página.
+- Temas que encajan perfecto animados: protocolos industriales (RS-485, Modbus, PROFINET, HART, OPC UA, MQTT), arquitectura SCADA/IIoT, lazo PID (variable que sigue el setpoint), válvula que abre según la señal, bomba con curva y punto de operación, chiller con agua que circula, triángulo de potencia que cambia con el FP, motor con corriente y temperatura, termografía, vibración, OEE que se descompone, árbol de fallas.
+- Siempre: números recalculados con Python, coma decimal, cero vivo/normas citadas solo si se verificaron, cierre "Prompt IA" y pie "Samuel Sánchez · IA con Samuel".
