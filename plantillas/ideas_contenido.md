@@ -128,6 +128,7 @@ Cada noche (~7:45 p. m.) la tarea "Ideas y tendencias para mañana" le envía a 
 ANTES de elegir tema, las tareas de la MAÑANA y de la TARDE deben:
 1. Leer en plantillas/ideas_propuestas.md el bloque para la fecha de hoy.
 2. Buscar con Gmail (search_threads) el hilo con asunto "Ideas para mañana – <fecha de hoy>" y leer si Samuel (capital692001@gmail.com) respondió: un número (1, 2, 3), su propia idea o cambios.
+2b. Si el bloque de hoy en ideas_propuestas.md tiene la marca "✅ ELEGIDA POR SAMUEL: idea N" o "✅ CAMBIO DE SAMUEL" (respondió en el chat de la tarea, no por correo), esa elección vale igual que una respuesta por correo (pedido de Samuel, 2026-11-21).
 3. MAÑANA (carrusel): usar la idea que eligió Samuel; si no respondió, la ★ recomendada. Aplicar sus cambios.
 4. TARDE (Reel): usar otra de las 3 ideas que encaje como Reel (o la misma en otro formato si Samuel lo pidió), respetando el estilo del día.
 5. En el correo de publicación decir: "Hoy publiqué la idea N que elegiste" (o "la recomendada, porque no alcanzaste a responder").
