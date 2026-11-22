@@ -184,3 +184,11 @@ Datos semana 16-22 nov: Reel 3D de objeto cotidiano (gaseosa) 145 vistas, 110 no
 4. Primer cuadro: objeto en movimiento + máximo 5 palabras, en segunda persona. NADA de pizarra, plano, lista ni lámina de texto en los primeros 3 s.
 5. El correo de ideas de la noche propone 3 ideas PARA EL REEL de mañana (no para carrusel), al menos una con objeto cotidiano en 3D.
 6. El carrusel del SÁBADO no usa la idea del correo (esa es para el Reel): elige su propio tema guardable (lista grande de prompts o guía paso a paso con nombres de herramientas).
+
+## RECURSOS LEGÍTIMOS DE INTERACCIÓN (Samuel, 2026-11-22) — aplicar en Reels, carrusel del sábado y LinkedIn
+- PROHIBIDO: botones falsos dibujados ("Desliza", "Toca aquí") que provocan "me gusta" por doble toque, y cualquier cebo de interacción ("dale like si…", "comenta SÍ"). Meta lo penaliza y le resta credibilidad a Samuel.
+1. HISTORIA REAL CON INTRIGA (1 vez por semana como mínimo): historias de marcas, inventos o personajes de tecnología e industria con un dato sorprendente y verificado (ej.: "Cómo Toyota inventó el mantenimiento que hoy usa la IA", "El error de un ingeniero que cambió…"). Siempre con fuente; sin fotos de personas reales ni logotipos.
+2. PREGUNTA EN LA PRIMERA LÁMINA / PRIMER SEGUNDO, RESPUESTA DESPUÉS: el carrusel deja la pregunta en la lámina 1 y la respuesta en la 2; el Reel revela la respuesta a mitad del video.
+3. IMAGEN QUE CONTINÚA: en carruseles, un dibujo, flecha o tubería cortada en el borde derecho que sigue en la lámina siguiente (diseño panorámico), para que deslizar sea natural.
+4. "ENVÍASELO A…" DIRIGIDO: el llamado a compartir nombra a una persona concreta que el espectador conoce ("Envíaselo al de mantenimiento que siempre contesta a las 2 a. m.", "…a tu amigo que tiene tienda", "…a quien está buscando trabajo").
+5. En el correo, recordar a Samuel poner un sticker de encuesta o quiz en la historia (legítimo y premiado).
