@@ -183,3 +183,4 @@ Datos semana 16-22 nov: Reel 3D de objeto cotidiano (gaseosa) 145 vistas, 110 no
 3. Reel 3D de OBJETO COTIDIANO al menos 3 veces por semana (gaseosa, nevera, celular, moto, bombillo, cafetera, candado, billetera…), con la idea de IA o negocio encima. Los demás días: preguntas sobre el propio espectador ("¿Qué sabe la IA de ti?", "¿Tu celular te escucha?") o tutoriales.
 4. Primer cuadro: objeto en movimiento + máximo 5 palabras, en segunda persona. NADA de pizarra, plano, lista ni lámina de texto en los primeros 3 s.
 5. El correo de ideas de la noche propone 3 ideas PARA EL REEL de mañana (no para carrusel), al menos una con objeto cotidiano en 3D.
+6. El carrusel del SÁBADO no usa la idea del correo (esa es para el Reel): elige su propio tema guardable (lista grande de prompts o guía paso a paso con nombres de herramientas).
