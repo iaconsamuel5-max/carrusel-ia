@@ -175,3 +175,11 @@ LinkedIn (página, 1 seguidor):
 - Formato: video 1080×1440 (3:4), 10-15 s, 30 fps, música suave (music.py 'corporate') + sonido ancla, loop limpio. Debe entenderse SIN sonido. Además una imagen fija (un cuadro representativo) para la página.
 - Temas que encajan perfecto animados: protocolos industriales (RS-485, Modbus, PROFINET, HART, OPC UA, MQTT), arquitectura SCADA/IIoT, lazo PID (variable que sigue el setpoint), válvula que abre según la señal, bomba con curva y punto de operación, chiller con agua que circula, triángulo de potencia que cambia con el FP, motor con corriente y temperatura, termografía, vibración, OEE que se descompone, árbol de fallas.
 - Siempre: números recalculados con Python, coma decimal, cero vivo/normas citadas solo si se verificaron, cierre "Prompt IA" y pie "Samuel Sánchez · IA con Samuel".
+
+## DECISIÓN DE SAMUEL 2026-11-22 (tras el informe semanal) — MANDA SOBRE TODO LO ANTERIOR
+Datos semana 16-22 nov: Reel 3D de objeto cotidiano (gaseosa) 145 vistas, 110 no seguidores; "¿Qué recuerda la IA de ti?" 31; carruseles 5-18; Reels que abren con pizarra, plano o láminas 4-10 (100 % omisión). 0 guardados y 0 compartidos en todo.
+1. INSTAGRAM = 1 SOLA PUBLICACIÓN AL DÍA: el Reel de la tarde (~6 p. m.). El carrusel de la mañana pasa a 1 vez por semana (sábado) solo para contenido guardable. Hasta pasar 100 seguidores.
+2. El Reel de la tarde usa LA idea que eligió Samuel en el correo de ideas (o la ★ recomendada); ya no hay "otra idea para la mañana".
+3. Reel 3D de OBJETO COTIDIANO al menos 3 veces por semana (gaseosa, nevera, celular, moto, bombillo, cafetera, candado, billetera…), con la idea de IA o negocio encima. Los demás días: preguntas sobre el propio espectador ("¿Qué sabe la IA de ti?", "¿Tu celular te escucha?") o tutoriales.
+4. Primer cuadro: objeto en movimiento + máximo 5 palabras, en segunda persona. NADA de pizarra, plano, lista ni lámina de texto en los primeros 3 s.
+5. El correo de ideas de la noche propone 3 ideas PARA EL REEL de mañana (no para carrusel), al menos una con objeto cotidiano en 3D.
