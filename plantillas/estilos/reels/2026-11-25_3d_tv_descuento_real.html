@@ -1,0 +1,116 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:Inter;font-weight:400;src:url(node_modules/@fontsource/inter/files/inter-latin-400-normal.woff2)}
+@font-face{font-family:Inter;font-weight:700;src:url(node_modules/@fontsource/inter/files/inter-latin-700-normal.woff2)}
+@font-face{font-family:Inter;font-weight:800;src:url(node_modules/@fontsource/inter/files/inter-latin-800-normal.woff2)}
+@font-face{font-family:Inter;font-weight:900;src:url(node_modules/@fontsource/inter/files/inter-latin-900-normal.woff2)}
+html,body{margin:0;background:#0B0C0F;overflow:hidden;width:1080px;height:1920px}
+#ov{position:absolute;inset:0;pointer-events:none;font-family:Inter;color:#F5F3EE}
+.a{position:absolute;opacity:0}
+.hook{left:60px;right:60px;top:200px;text-align:center;font-weight:900;font-size:104px;line-height:1.0;letter-spacing:-3px;text-shadow:0 8px 40px rgba(0,0,0,.8)}
+.hook span{color:#FFE14D}
+.sub{left:0;right:0;top:430px;text-align:center;font-size:40px;font-weight:700;color:#C9CED6;letter-spacing:1px}
+.sub b{color:#E63946}
+.card{left:80px;right:80px;height:100px;border-radius:26px;background:rgba(20,22,27,.93);border:3px solid #2B2F37;display:flex;align-items:center;gap:26px;padding:0 32px;font-size:46px;font-weight:700;box-shadow:0 10px 40px rgba(0,0,0,.55)}
+.card b{color:#FFE14D;margin-left:auto}
+.card s{color:#E63946;margin-left:auto;text-decoration-thickness:5px}
+.res{left:80px;right:80px;top:1395px;text-align:center;font-size:46px;font-weight:900;color:#0B0C0F;background:#FFE14D;border-radius:24px;padding:16px 10px}
+.ej{left:0;right:0;top:1478px;text-align:center;font-size:28px;color:#9AA3AE}
+.phone{left:110px;right:110px;top:1000px;border-radius:36px;background:#F5F3EE;color:#14161A;padding:30px 36px;box-sizing:border-box;box-shadow:0 20px 80px rgba(255,225,77,.35);border:6px solid #FFE14D}
+.phone .t{font-size:30px;color:#6A717B;font-weight:800;letter-spacing:3px}
+.phone .m{font-size:46px;font-weight:800;line-height:1.18;margin-top:12px}
+.phone .m span{background:#FFE14D;padding:0 6px}
+.cta{left:60px;right:60px;top:1010px;text-align:center;background:rgba(11,12,15,.92);border-radius:36px;padding:34px 10px;border:3px solid #FFE14D}
+.cta .c1{font-size:64px;font-weight:900;line-height:1.06;letter-spacing:-1.5px}
+.cta .c1 span{color:#FFE14D}
+.cta .c2{margin-top:24px;font-size:42px;font-weight:700;color:#C9CED6}
+.cta .c2 b{color:#FFE14D}
+.foot{left:0;right:0;top:1445px;text-align:center;font-size:30px;color:#9AA3AE}
+.bar{left:0;right:0;height:0;background:#000}
+</style></head><body>
+<div id="ov">
+ <div style="position:absolute;left:0;right:0;top:0;height:560px;background:linear-gradient(#0B0C0F 70%,rgba(11,12,15,0))"></div>
+ <div class="a hook" id="hook">¿Ese <span>-40 %</span><br>es real?</div>
+ <div class="a sub" id="sub">Black Friday · <b>viernes 27</b></div>
+ <div class="a card" id="c1" style="top:1030px"><svg width="60" height="60" viewBox="0 0 60 60"><rect x="6" y="10" width="48" height="44" rx="6" fill="none" stroke="#C9CED6" stroke-width="5"/><path d="M6 22h48M18 4v12M42 4v12" stroke="#C9CED6" stroke-width="5"/></svg><div>Hace un mes</div><b>$2.000.000</b></div>
+ <div class="a card" id="c2" style="top:1150px"><svg width="60" height="60" viewBox="0 0 60 60"><path d="M30 6l26 46H4z" fill="#E63946"/><rect x="27" y="22" width="6" height="16" fill="#fff"/><rect x="27" y="42" width="6" height="6" fill="#fff"/></svg><div>Hoy dice "antes"</div><s>$2.500.000</s></div>
+ <div class="a card" id="c3" style="top:1270px"><svg width="60" height="60" viewBox="0 0 60 60"><path d="M6 30L30 6h22v22L28 52z" fill="#FFE14D"/><circle cx="42" cy="17" r="5" fill="#0B0C0F"/></svg><div>Precio de oferta</div><b>$1.500.000</b></div>
+ <div class="a res" id="res">Descuento real: 25 %, no 40 %</div>
+ <div class="a ej" id="ej">Ejemplo ilustrativo</div>
+ <div class="a phone" id="ph"><div class="t">PÍDESELO A LA IA</div><div class="m">"Hace un mes costaba $__.<br>Hoy dice antes $__, ahora $__.<br><span>¿Cuál es el descuento real?</span>"</div></div>
+ <div class="a cta" id="cta"><div class="c1">Envíaselo a quien ya<br>tiene el <span>carrito lleno</span></div><div class="c2"><b>Guárdalo</b> · @samuelsanchez1407</div></div>
+ <div class="a foot" id="foot">Samuel Sánchez · #IAconSamuel</div>
+ <div class="a bar" id="b1" style="top:0;opacity:1"></div><div class="a bar" id="b2" style="bottom:0;opacity:1"></div>
+</div>
+<script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js"}}</script>
+<script type="module">
+import * as THREE from 'three';
+await document.fonts.load('900 100px Inter');await document.fonts.load('800 100px Inter');
+const W=1080,H=1920;const r=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});r.setSize(W,H);r.setPixelRatio(1);r.toneMapping=THREE.ACESFilmicToneMapping;r.outputColorSpace=THREE.SRGBColorSpace;r.shadowMap.enabled=true;r.domElement.style.position='absolute';document.body.prepend(r.domElement);
+const sc=new THREE.Scene();sc.background=new THREE.Color('#0B0C0F');sc.fog=new THREE.Fog('#0B0C0F',30,60);
+const cam=new THREE.PerspectiveCamera(32,W/H,.1,100);
+sc.add(new THREE.HemisphereLight('#d8dee8','#201810',.55));
+const key=new THREE.SpotLight('#fff4dc',260,0,.5,.6,1.4);key.position.set(5,11,9);key.castShadow=true;sc.add(key);
+const rim=new THREE.PointLight('#FFE14D',40,0,1.2);rim.position.set(-8,3,-3);sc.add(rim);
+const red=new THREE.PointLight('#E63946',30,0,1.2);red.position.set(7,-1,5);sc.add(red);
+// floor
+const floor=new THREE.Mesh(new THREE.CircleGeometry(14,64),new THREE.MeshStandardMaterial({color:'#15171C',roughness:.35,metalness:.4}));floor.rotation.x=-Math.PI/2;floor.position.y=-3.1;floor.receiveShadow=true;sc.add(floor);
+const G=new THREE.Group();sc.add(G);
+const dark=new THREE.MeshStandardMaterial({color:'#121317',roughness:.35,metalness:.6});
+// TV
+const tv=new THREE.Mesh(new THREE.BoxGeometry(6.4,3.8,.22),dark);tv.castShadow=true;G.add(tv);
+// screen canvas
+const sc1=document.createElement('canvas');sc1.width=1024;sc1.height=600;const sx=sc1.getContext('2d');
+const stex=new THREE.CanvasTexture(sc1);stex.colorSpace=THREE.SRGBColorSpace;
+const screen=new THREE.Mesh(new THREE.PlaneGeometry(6.1,3.5),new THREE.MeshBasicMaterial({map:stex}));screen.position.z=.115;G.add(screen);
+function drawScreen(t){const g=sx.createLinearGradient(0,0,0,600);g.addColorStop(0,'#1d3b6e');g.addColorStop(.55,'#e2774a');g.addColorStop(1,'#2a1630');sx.fillStyle=g;sx.fillRect(0,0,1024,600);
+ sx.fillStyle='#ffd36b';sx.beginPath();sx.arc(512,330+Math.sin(t)*6,70,0,7);sx.fill();
+ sx.fillStyle='#1a1226';sx.beginPath();sx.moveTo(0,600);for(let x=0;x<=1024;x+=32)sx.lineTo(x,420+40*Math.sin(x*.012+t*.6)+25*Math.sin(x*.031));sx.lineTo(1024,600);sx.fill();
+ sx.fillStyle='rgba(255,255,255,.08)';sx.fillRect(0,0,1024,600*.5*(1+Math.sin(t*.7))*.2);stex.needsUpdate=true}
+// stand
+const neck=new THREE.Mesh(new THREE.BoxGeometry(.5,1.0,.3),dark);neck.position.set(0,-2.4,-.1);G.add(neck);
+const base=new THREE.Mesh(new THREE.BoxGeometry(2.6,.12,1.2),dark);base.position.set(0,-2.95,0);base.castShadow=true;G.add(base);
+// box under (gift/caja)
+// price tag pivot on top-right corner
+const piv=new THREE.Group();piv.position.set(2.2,1.9,.3);G.add(piv);
+const str=new THREE.Mesh(new THREE.CylinderGeometry(.015,.015,1.0,6),new THREE.MeshBasicMaterial({color:'#d9d9d9'}));str.position.y=-.5;piv.add(str);
+function tagTex(bg,fg,l1,l2,s2){const c=document.createElement('canvas');c.width=512;c.height=640;const x=c.getContext('2d');
+ x.fillStyle=bg;x.beginPath();x.moveTo(256,0);x.lineTo(512,140);x.lineTo(512,640);x.lineTo(0,640);x.lineTo(0,140);x.closePath();x.fill();
+ x.fillStyle='#0B0C0F';x.beginPath();x.arc(256,95,30,0,7);x.fill();
+ x.fillStyle=fg;x.textAlign='center';x.font='800 70px Inter';x.fillText(l1,256,280);x.font='900 '+s2+'px Inter';x.fillText(l2,256,470);
+ const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;return t}
+const tg=new THREE.Group();tg.position.y=-1.0-1.0;piv.add(tg);
+const tf=new THREE.Mesh(new THREE.PlaneGeometry(1.6,2.0),new THREE.MeshStandardMaterial({map:tagTex('#E63946','#fff','OFERTA','-40 %',160),roughness:.5,transparent:true,alphaTest:.5}));tf.position.y=0;tg.add(tf);
+const tb=new THREE.Mesh(new THREE.PlaneGeometry(1.6,2.0),new THREE.MeshStandardMaterial({map:tagTex('#FFE14D','#0B0C0F','REAL','25 %',170),roughness:.5,transparent:true,alphaTest:.5}));tb.rotation.y=Math.PI;tg.add(tb);
+tf.castShadow=true;
+G.position.y=.9;const glow=new THREE.PointLight('#e2774a',25,0,1.3);glow.position.set(0,.9,2.5);sc.add(glow);const frameL=new THREE.PointLight('#ffffff',18,0,1.2);frameL.position.set(-6,5,6);sc.add(frameL);
+// particles dust
+const pg=new THREE.BufferGeometry(),N=300,pos=new Float32Array(N*3);let sd=11;const rnd=()=>{sd=(sd*16807)%2147483647;return sd/2147483647};
+for(let i=0;i<N*3;i++)pos[i]=(rnd()-.5)*(i%3==1?18:20);pg.setAttribute('position',new THREE.BufferAttribute(pos,3));
+const pts=new THREE.Points(pg,new THREE.PointsMaterial({color:'#FFE9A0',size:.05,transparent:true,opacity:.5}));sc.add(pts);
+const $=id=>document.getElementById(id);const cl=x=>Math.max(0,Math.min(1,x));const eo=x=>1-Math.pow(1-cl(x),3);const eio=x=>{x=cl(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2};
+function show(id,t,a,b,dy=40,fade=.35){const el=$(id);const i=eo((t-a)/fade),o=b?cl((b-t)/fade):1;const v=Math.min(i,o);el.style.opacity=v;el.style.transform=`translateY(${(1-i)*dy}px) scale(${.94+.06*i})`}
+const D=10.5;
+window.draw=(t)=>{
+ drawScreen(t);
+ // camera: cinematic dolly + orbit, loops
+ const a=Math.sin(t*2*Math.PI/D)*0.35;const dist=23.5-1.2*Math.sin(t*Math.PI/D);
+ cam.position.set(Math.sin(a)*dist,1.6+.6*Math.sin(t*2*Math.PI/D),Math.cos(a)*dist);cam.lookAt(0,-.2,0);
+ G.rotation.y=-.18+.12*Math.sin(t*2*Math.PI/D);
+ // tag: swing, flip at 4.4-5.0, flip back at 9.6-10.3
+ const flip=eio((t-4.4)/.6)-eio((t-9.7)/.6);
+ tg.rotation.y=flip*Math.PI;piv.rotation.z=.18*Math.sin(t*3.2)*(1-.6*cl((t-4.4)/.6)*(1-cl((t-9.7)/.6)));
+ const pop=1+.18*Math.exp(-Math.pow((t-5.0)*5,2));tg.scale.setScalar(pop);
+ red.intensity=30+(t>4.4&&t<9.7?-25:0);rim.intensity=40+(t>4.4&&t<9.7?30:0);
+ pts.rotation.y=t*.05;
+ r.render(sc,cam);
+ // overlay
+ show('hook',t,-1,99,30);const ho=$('hook');if(t<.5){ho.style.opacity=1;ho.style.transform=`scale(${1.1-.1*eo(t/.5)})`}
+ show('sub',t,.4,8.0,0);if(t>9.8)$('sub').style.opacity=eo((t-9.8)/.4);
+ show('c1',t,1.2,5.7);show('c2',t,2.2,5.7);show('c3',t,3.2,5.7);show('res',t,4.6,5.7,30);show('ej',t,1.2,5.7,0);
+ show('ph',t,5.9,8.1,80,.3);
+ show('cta',t,8.2,10.1,50);
+ show('foot',t,8.2,10.1,0);
+ const bh=60*eo(t/.4)*(1-cl((t-9.9)/.5));$('b1').style.height=bh+'px';$('b2').style.height=bh+'px';
+ return true};
+window.ready=true;
+</script></body></html>
