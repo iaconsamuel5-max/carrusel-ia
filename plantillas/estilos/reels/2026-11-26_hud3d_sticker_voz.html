@@ -1,0 +1,151 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:Inter;font-weight:500;src:url(node_modules/@fontsource/inter/files/inter-latin-500-normal.woff2)}
+@font-face{font-family:Inter;font-weight:700;src:url(node_modules/@fontsource/inter/files/inter-latin-700-normal.woff2)}
+@font-face{font-family:Inter;font-weight:800;src:url(node_modules/@fontsource/inter/files/inter-latin-800-normal.woff2)}
+@font-face{font-family:Inter;font-weight:900;src:url(node_modules/@fontsource/inter/files/inter-latin-900-normal.woff2)}
+html,body{margin:0;background:#0D0A18;overflow:hidden;width:1080px;height:1920px}
+#hud{position:absolute;left:0;top:0}
+#ov{position:absolute;inset:0;pointer-events:none;font-family:Inter;color:#F4F1FA}
+.a{position:absolute;opacity:0}
+.hook{left:40px;right:40px;top:190px;text-align:center;font-weight:900;font-size:112px;line-height:1.0;letter-spacing:-3px;text-shadow:0 8px 40px rgba(0,0,0,.9)}
+.hook span{color:#25D366}
+.sub{left:0;right:0;top:432px;text-align:center;font-size:40px;font-weight:700;color:#CFC7E8}
+.sub b{color:#FFE14D}
+.panel{left:70px;right:70px;top:1120px;border-radius:30px;background:rgba(18,14,34,.94);border:3px solid #25D366;padding:30px 36px;box-shadow:0 0 60px rgba(37,211,102,.25)}
+.tag{font-size:30px;font-weight:800;letter-spacing:4px;color:#25D366}
+.big{font-size:64px;font-weight:900;line-height:1.05;margin-top:10px;letter-spacing:-1px}
+.big span{color:#FFE14D}
+.small{font-size:38px;font-weight:700;color:#CFC7E8;margin-top:16px;line-height:1.2}
+.small b{color:#F4F1FA}
+.step{left:70px;right:70px;height:104px;border-radius:26px;background:rgba(18,14,34,.94);border:3px solid #6C3BD1;display:flex;align-items:center;gap:24px;padding:0 28px;font-size:44px;font-weight:800;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+.step .n{width:66px;height:66px;border-radius:50%;background:#FFE14D;color:#0D0A18;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:40px;flex:none}
+.step em{font-style:normal;color:#25D366}
+.note{left:0;right:0;top:1474px;text-align:center;font-size:38px;font-weight:700;color:#A79BD0}
+.title2{left:0;right:0;top:215px;text-align:center;font-size:84px;font-weight:900;letter-spacing:-2px}
+.title2 span{color:#FFE14D}
+.cta{left:60px;right:60px;top:1100px;text-align:center;background:rgba(13,10,24,.94);border-radius:36px;padding:34px 10px;border:3px solid #FFE14D}
+.cta .c1{font-size:62px;font-weight:900;line-height:1.08;letter-spacing:-1.5px}
+.cta .c1 span{color:#25D366}
+.cta .c2{margin-top:22px;font-size:42px;font-weight:700;color:#CFC7E8}
+.cta .c2 b{color:#FFE14D}
+.foot{left:0;right:0;top:1466px;text-align:center;font-size:38px;color:#A79BD0}
+</style></head><body>
+<canvas id="hud" width="1080" height="1920"></canvas>
+<div id="ov">
+ <div style="position:absolute;left:0;right:0;top:0;height:540px;background:linear-gradient(#0D0A18 62%,rgba(13,10,24,0))"></div>
+ <div class="a hook" id="hook">¿Tu sticker<br>ya <span>habla</span>?</div>
+ <div class="a sub" id="sub">WhatsApp ya lo está <b>probando</b></div>
+ <div class="a title2" id="t2">Prepáralo <span>con IA</span></div>
+ <div class="a panel" id="pn"><div class="tag">NUEVO EN WHATSAPP</div><div class="big">Stickers con <span>tu voz</span></div><div class="small">Ya llegan a <b>algunos usuarios beta</b></div></div>
+ <div class="a step" id="s1" style="top:1110px"><div class="n">1</div><div>Tu foto → <em>caricatura con IA</em></div></div>
+ <div class="a step" id="s2" style="top:1232px"><div class="n">2</div><div>WhatsApp: <em>Crear sticker</em></div></div>
+ <div class="a step" id="s3" style="top:1354px"><div class="n">3</div><div>Añádele <em>tu voz</em></div></div>
+ <div class="a note" id="nt">Llega por fases · usa solo tu foto y tu voz</div>
+ <div class="a cta" id="cta"><div class="c1">Envíaselo al del grupo<br>que manda <span>más stickers</span></div><div class="c2"><b>Guárdalo</b> · @samuelsanchez1407</div></div>
+ <div class="a foot" id="foot">Samuel Sánchez · #IAconSamuel</div>
+</div>
+<script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js","three/addons/":"./node_modules/three/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import {RoundedBoxGeometry} from 'three/addons/geometries/RoundedBoxGeometry.js';
+await document.fonts.load('900 100px Inter');await document.fonts.load('800 100px Inter');await document.fonts.load('700 100px Inter');await document.fonts.load('500 100px Inter');
+const masc=new Image();masc.src='mascot.svg';await masc.decode();
+const W=1080,H=1920;const r=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true,alpha:true});r.setSize(W,H);r.setPixelRatio(1);r.toneMapping=THREE.ACESFilmicToneMapping;r.outputColorSpace=THREE.SRGBColorSpace;r.shadowMap.enabled=true;r.domElement.style.position='absolute';document.body.prepend(r.domElement);
+const sc=new THREE.Scene();sc.background=new THREE.Color('#0D0A18');
+const cam=new THREE.PerspectiveCamera(30,W/H,.1,100);
+sc.add(new THREE.HemisphereLight('#e6e0ff','#1a1024',.6));
+const key=new THREE.SpotLight('#fff6e8',300,0,.5,.6,1.4);key.position.set(5,12,10);key.castShadow=true;sc.add(key);
+const gL=new THREE.PointLight('#25D366',45,0,1.2);gL.position.set(-7,3,2);sc.add(gL);
+const pL=new THREE.PointLight('#6C3BD1',60,0,1.2);pL.position.set(7,0,4);sc.add(pL);
+// table
+const tex=document.createElement('canvas');tex.width=1024;tex.height=1024;{const x=tex.getContext('2d');x.fillStyle='#3a2616';x.fillRect(0,0,1024,1024);for(let i=0;i<180;i++){x.strokeStyle=`rgba(${20+Math.random()*30},${10+Math.random()*15},0,.35)`;x.lineWidth=1+Math.random()*3;x.beginPath();const y=Math.random()*1024;x.moveTo(0,y);for(let k=0;k<=1024;k+=64)x.lineTo(k,y+8*Math.sin(k*.01+i));x.stroke()}}
+const ttex=new THREE.CanvasTexture(tex);ttex.colorSpace=THREE.SRGBColorSpace;
+const table=new THREE.Mesh(new THREE.CircleGeometry(12,64),new THREE.MeshStandardMaterial({map:ttex,roughness:.55,metalness:.05}));table.rotation.x=-Math.PI/2;table.position.y=-4.1;table.receiveShadow=true;sc.add(table);
+const G=new THREE.Group();sc.add(G);
+// phone
+const body=new THREE.Mesh(new RoundedBoxGeometry(3.3,6.6,.32,6,.38),new THREE.MeshStandardMaterial({color:'#1a1a22',roughness:.25,metalness:.8}));body.castShadow=true;G.add(body);
+const sC=document.createElement('canvas');sC.width=640;sC.height=1280;const sx=sC.getContext('2d');const stex=new THREE.CanvasTexture(sC);stex.colorSpace=THREE.SRGBColorSpace;
+const screen=new THREE.Mesh(new THREE.PlaneGeometry(3.05,6.1),new THREE.MeshBasicMaterial({map:stex,toneMapped:false}));screen.position.z=.165;G.add(screen);
+function rr(x,X,Y,w,h,R){x.beginPath();x.roundRect(X,Y,w,h,R)}
+function drawScreen(t,out){
+ sx.fillStyle='#ECE5DD';sx.fillRect(0,0,640,1280);
+ // pattern
+ sx.fillStyle='rgba(0,0,0,.035)';for(let i=0;i<60;i++){sx.beginPath();sx.arc((i*97)%640,(i*173)%1280,10,0,7);sx.fill()}
+ sx.fillStyle='#128C4A';sx.fillRect(0,0,640,150);
+ sx.fillStyle='#fff';sx.beginPath();sx.arc(70,95,32,0,7);sx.fill();sx.fillStyle='#128C4A';sx.font='800 30px Inter';sx.textAlign='center';sx.fillText('LB',70,106);
+ sx.textAlign='left';sx.fillStyle='#fff';sx.font='800 34px Inter';sx.fillText('Los del barrio',120,92);sx.font='500 24px Inter';sx.fillText('Juan, Marta, tú y 12 más',120,126);
+ const msgs=[['¿Quién abre mañana?',0,230],['Yo abro a las 7',1,330],['¿Me fían una gaseosa? :)',0,430]];
+ for(const [m,me,y] of msgs){sx.font='500 30px Inter';const w=sx.measureText(m).width+44;const X=me?640-30-w:30;sx.fillStyle=me?'#D9FDD3':'#fff';rr(sx,X,y,w,70,18);sx.fill();sx.fillStyle='#111';sx.fillText(m,X+22,y+46)}
+ // sticker slot
+ const k=1-out;if(k>.02){sx.globalAlpha=k;drawSticker(sx,340,560,260,t);sx.globalAlpha=1}
+ // input bar
+ sx.fillStyle='#fff';rr(sx,24,1160,500,84,42);sx.fill();sx.fillStyle='#888';sx.font='500 30px Inter';sx.fillText('Mensaje',70,1212);
+ sx.fillStyle='#25D366';sx.beginPath();sx.arc(580,1202,42,0,7);sx.fill();
+ sx.fillStyle='#fff';rr(sx,570,1178,20,34,10);sx.fill();sx.fillRect(578,1214,4,12);
+ stex.needsUpdate=true}
+function drawSticker(x,X,Y,S,t){ // white outlined sticker of mascot + speaker badge
+ const w=S,h=S*430/330;
+ x.save();x.shadowColor='rgba(0,0,0,.25)';x.shadowBlur=12;x.fillStyle='#fff';rr(x,X-12,Y-12,w+24,h*0.82+24,40);x.fill();x.restore();
+ x.save();rr(x,X,Y,w,h*.82,30);x.clip();x.fillStyle='#FFE14D';x.fillRect(X,Y,w,h);x.drawImage(masc,X+w*.04,Y+h*.02,w*.92,h*.92);x.restore();
+ // speaker badge
+ x.fillStyle='#111';x.beginPath();x.arc(X+w-8,Y+h*.82-8,30,0,7);x.fill();
+ x.fillStyle='#fff';x.beginPath();x.moveTo(X+w-24,Y+h*.82-16);x.lineTo(X+w-16,Y+h*.82-16);x.lineTo(X+w-6,Y+h*.82-26);x.lineTo(X+w-6,Y+h*.82+10);x.lineTo(X+w-16,Y+h*.82);x.lineTo(X+w-24,Y+h*.82);x.fill();
+ x.strokeStyle='#fff';x.lineWidth=3;x.beginPath();x.arc(X+w-4,Y+h*.82-8,10,-.8,.8);x.stroke();
+}
+// 3D sticker that pops out
+const stC=document.createElement('canvas');stC.width=640;stC.height=800;const stx=stC.getContext('2d');const sttex=new THREE.CanvasTexture(stC);sttex.colorSpace=THREE.SRGBColorSpace;
+function drawBig(t,talk){stx.clearRect(0,0,640,800);drawSticker(stx,70,70,500,t);
+ // speech bubble
+ stx.fillStyle='#fff';stx.strokeStyle='#111';stx.lineWidth=6;rr(stx,30,560,580,170,40);stx.fill();stx.stroke();
+ stx.beginPath();stx.moveTo(300,566);stx.lineTo(340,520);stx.lineTo(370,566);stx.fill();
+ stx.fillStyle='#111';stx.font='900 52px Inter';stx.textAlign='center';stx.fillText('¡Hoy no fío,',320,630);stx.fillStyle='#128C4A';stx.fillText('mañana sí!',320,694);stx.textAlign='left';
+ sttex.needsUpdate=true}
+const big=new THREE.Mesh(new THREE.PlaneGeometry(3.2,4.0),new THREE.MeshBasicMaterial({map:sttex,transparent:true,toneMapped:false}));G.add(big);
+// gift-ish dust
+const pg=new THREE.BufferGeometry(),N=260,pos=new Float32Array(N*3);let sd=7;const rnd=()=>{sd=(sd*16807)%2147483647;return sd/2147483647};
+for(let i=0;i<N*3;i++)pos[i]=(rnd()-.5)*(i%3==1?16:18);pg.setAttribute('position',new THREE.BufferAttribute(pos,3));
+const pts=new THREE.Points(pg,new THREE.PointsMaterial({color:'#9fffc8',size:.05,transparent:true,opacity:.45}));sc.add(pts);
+// HUD
+const hc=document.getElementById('hud').getContext('2d');
+const $=id=>document.getElementById(id);const cl=x=>Math.max(0,Math.min(1,x));const eo=x=>1-Math.pow(1-cl(x),3);const eob=x=>{x=cl(x);const c1=1.70158,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)};
+function show(id,t,a,b,dy=40,fade=.35){const el=$(id);const i=eo((t-a)/fade),o=b?cl((b-t)/fade):1;const v=Math.min(i,o);el.style.opacity=v;el.style.transform=`translateY(${(1-i)*dy}px) scale(${.94+.06*i})`}
+const D=10.5;
+const v3=new THREE.Vector3();
+function hud(t,cx,cy,talk){hc.clearRect(0,0,W,H);
+ // corner brackets
+ hc.strokeStyle='rgba(37,211,102,.7)';hc.lineWidth=5;const m=40,L=70;
+ for(const [x,y,sx_,sy] of [[m,m+140,1,1],[W-m,m+140,-1,1],[m,H-m-380,1,-1],[W-m,H-m-380,-1,-1]]){hc.beginPath();hc.moveTo(x,y+sy*L);hc.lineTo(x,y);hc.lineTo(x+sx_*L,y);hc.stroke()}
+ // radar rings from sticker
+ for(let i=0;i<4;i++){const p=((t*0.9+i/4)%1);const R=120+p*430;hc.strokeStyle=`rgba(37,211,102,${(1-p)*.55*talk})`;hc.lineWidth=6*(1-p)+1;hc.beginPath();hc.arc(cx,cy,R,0,7);hc.stroke()}
+ // sweep
+ hc.save();hc.translate(cx,cy);hc.rotate(t*2.2);const g=hc.createConicGradient(0,0,0);g.addColorStop(0,'rgba(37,211,102,.28)');g.addColorStop(.12,'rgba(37,211,102,0)');g.addColorStop(1,'rgba(37,211,102,0)');hc.fillStyle=g;hc.globalAlpha=.6*talk;hc.beginPath();hc.arc(0,0,520,0,7);hc.fill();hc.restore();hc.globalAlpha=1;
+ // waveform bars
+ const wv=talk*(1-cl((t-2.6)/.3))+cl((t-10.1)/.3);const bw=14,n=22,x0=cx-(n*bw*1.6)/2,y0=cy+290;
+ for(let i=0;i<n;i++){const a=Math.abs(Math.sin(t*9+i*.7)*Math.sin(t*3.1+i*.33));const h=(14+a*90)*talk;hc.globalAlpha=.85*wv;hc.fillStyle=i%5==0?'#FFE14D':'#25D366';hc.fillRect(x0+i*bw*1.6,y0-h/2,bw,h)}hc.globalAlpha=1;
+ hc.font='800 28px Inter';hc.fillStyle=`rgba(37,211,102,${.9*wv})`;hc.fillText('SEÑAL DE AUDIO · 3 REPETICIONES',cx-270,y0+90);
+}
+window.draw=(t)=>{
+ const tt=t%D;
+ // sticker out amount: out from 0 to ~10.1, back in at end (loop)
+ const out=Math.min(eob(tt/.45),1-eo((tt-10.0)/.45));
+ drawScreen(tt,cl(out));drawBig(tt,1);
+ const ang=Math.sin(tt*2*Math.PI/D);
+ cam.position.set(ang*3.2,1.2+.4*Math.sin(tt*4*Math.PI/D),24);cam.lookAt(0,-.4,0);
+ G.position.set(0,-.75,0);G.rotation.set(-.08,-.22+.22*ang,0.04*Math.sin(tt*1.3));
+ // phone shrinks back during panels (3-10)
+ const bob=Math.sin(tt*6.2)*.12;const sq=1+.05*Math.sin(tt*12.4);
+ big.position.set(.2*out,(.3+.62*out)+bob*out,.2+2.6*out);big.rotation.set(0,.22-.22*ang,.08*Math.sin(tt*3.1)*out);
+ const s=(.42+.32*out);big.scale.set(s*sq,s/sq,1);big.material.opacity=cl(out*4);
+ pts.rotation.y=tt*.05;
+ r.render(sc,cam);
+ v3.copy(big.position);big.parent.localToWorld(v3);v3.project(cam);const cx=(v3.x*.5+.5)*W,cy=(-v3.y*.5+.5)*H;
+ hud(tt,cx,cy,cl(out));
+ show('hook',tt,-1,2.9,30);const ho=$('hook');if(tt<.5){ho.style.opacity=1;ho.style.transform=`scale(${1.12-.12*eo(tt/.5)})`}if(tt>10.1){ho.style.opacity=eo((tt-10.1)/.35);ho.style.transform=`scale(${1.12-.12*eo((tt-10.1)/.35)})`}
+ show('sub',tt,.35,2.9,0);
+ show('pn',tt,2.95,5.3,60);
+ show('t2',tt,5.35,8.2,30);
+ show('s1',tt,5.5,8.2);show('s2',tt,6.3,8.2);show('s3',tt,7.1,8.2);show('nt',tt,5.5,8.2,0);
+ show('cta',tt,8.35,10.1,50);show('foot',tt,8.35,10.1,0);
+ return true};
+window.ready=true;
+</script></body></html>
