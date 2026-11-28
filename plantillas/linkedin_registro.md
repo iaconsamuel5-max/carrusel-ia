@@ -5,3 +5,4 @@
 2026-11-24 | ficha | Ficha de campo #2: triángulo de potencia y corrección del FP (motor 50 kW, condensadores, pinza animada) | página: publicada (urn:li:share:7530961214164795393)
 2026-11-25 | ficha | Ficha de campo #3: Modbus RTU por RS-485 (trama de lectura animada, maestro y 3 esclavos) | página: publicada (urn:li:share:7531323556635541504)
 2026-11-26 | ficha | Ficha de campo #4: punto de operación de una bomba centrífuga (curva bomba vs sistema, válvula que estrangula, caudal animado) | página: publicada (urn:li:share:7531686141402677251)
+2026-11-28 | ficha | Ficha de campo #5: arranque estrella-triángulo (eléctrica; contactores KM1/KM2/KM3 que cierran, temporizador, curva de corriente Y vs directo) | página: publicada (urn:li:share:7532410781481627648)
